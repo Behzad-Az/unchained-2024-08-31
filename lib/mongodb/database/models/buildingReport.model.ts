@@ -1,6 +1,6 @@
 import { Document, Schema, models, model } from "mongoose"
 
-export interface IBuilding extends Document {
+export interface IBuildingReport extends Document {
   _id: string
   title: string
   description?: string
@@ -16,7 +16,7 @@ export interface IBuilding extends Document {
   submitter: { _id: string, firstName: string, lastName: string }
 }
 
-const BuildingSchema = new Schema({
+const BuildingReportSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   location: { type: String },
@@ -27,10 +27,10 @@ const BuildingSchema = new Schema({
   price: { type: String },
   isFree: { type: Boolean, default: false },
   url: { type: String },
-  category: { type: Schema.Types.ObjectId, ref: "Category" },
-  submitter: { type: Schema.Types.ObjectId, ref: "User" }
+  categoryId: { type: Schema.Types.ObjectId, ref: "Category" },
+  submitterId: { type: Schema.Types.ObjectId, ref: "User" }
 })
 
-const Building = models.Building || model("Building", BuildingSchema)
+const BuildingReport = models.BuildingReport || model("BuildingReport", BuildingReportSchema)
 
-export default Building;
+export default BuildingReport
