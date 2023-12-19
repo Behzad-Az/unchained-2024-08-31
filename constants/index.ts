@@ -4,8 +4,8 @@ export const headerLinks = [
     route: '/',
   },
   {
-    label: 'Create Event',
-    route: '/events/create',
+    label: 'Create Building',
+    route: '/buildings/create',
   },
   {
     label: 'My Profile',
@@ -13,7 +13,7 @@ export const headerLinks = [
   },
 ]
 
-export const eventDefaultValues = {
+export const buildingDefaultValues = {
   title: '',
   description: '',
   location: '',
