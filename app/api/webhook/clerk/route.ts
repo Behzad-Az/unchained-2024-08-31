@@ -4,6 +4,7 @@ import { WebhookEvent } from '@clerk/nextjs/server'
 import { createUser, deleteUser, updateUser } from '@/lib/actions/user.actions'
 import { clerkClient } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
+import { CreateUserParams } from '@/types'
  
 export async function POST(req: Request) {
  
@@ -57,26 +58,30 @@ export async function POST(req: Request) {
   if(eventType === 'user.created') {
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
-    const user = {
+    const user: CreateUserParams = {
       clerkId: id,
       email: email_addresses[0].email_address,
-      username: username || '',
-      firstName: first_name,
-      lastName: last_name,
-      photo: image_url,
+      username: username || 'not_provided',
+      firstName: first_name || 'not_provided',
+      lastName: last_name || 'not_provided',
+      photo: image_url || 'not_provided',
     }
 
-    const newUser = await createUser(user);
-
-    if(newUser) {
-      await clerkClient.users.updateUserMetadata(id, {
-        publicMetadata: {
-          userId: newUser._id
-        }
-      })
+    try {
+      const newUser = await createUser(user);
+      console.log("I'm here 3: ", newUser)
+      if(newUser) {
+        await clerkClient.users.updateUserMetadata(id, {
+          publicMetadata: {
+            userId: newUser._id
+          }
+        })
+      }
+      return NextResponse.json({ message: 'OK', user: newUser })
+    } catch (error) {
+      console.log("I'm here 4: ", error)
     }
 
-    return NextResponse.json({ message: 'OK', user: newUser })
   }
 
   if (eventType === 'user.updated') {
