@@ -62,26 +62,21 @@ export async function POST(req: Request) {
       clerkId: id,
       email: email_addresses[0].email_address,
       username: username || 'not_provided',
-      firstName: first_name || 'not_provided',
-      lastName: last_name || 'not_provided',
-      photo: image_url || 'not_provided',
+      firstName: first_name,
+      lastName: last_name,
+      photo: image_url,
     }
 
-    try {
-      const newUser = await createUser(user);
-      console.log("I'm here 3: ", newUser)
-      if(newUser) {
-        await clerkClient.users.updateUserMetadata(id, {
-          publicMetadata: {
-            userId: newUser._id
-          }
-        })
-      }
-      return NextResponse.json({ message: 'OK', user: newUser })
-    } catch (error) {
-      console.log("I'm here 4: ", error)
+    const newUser = await createUser(user);
+    if(newUser) {
+      await clerkClient.users.updateUserMetadata(id, {
+        publicMetadata: {
+          userId: newUser._id
+        }
+      })
     }
-
+    return NextResponse.json({ message: 'OK', user: newUser })
+    
   }
 
   if (eventType === 'user.updated') {

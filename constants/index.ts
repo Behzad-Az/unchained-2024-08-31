@@ -4,8 +4,8 @@ export const headerLinks = [
     route: '/',
   },
   {
-    label: 'Create Building',
-    route: '/buildings/create',
+    label: 'Upload Building Report',
+    route: '/buildingreports/upload',
   },
   {
     label: 'My Profile',
@@ -13,13 +13,11 @@ export const headerLinks = [
   },
 ]
 
-export const buildingDefaultValues = {
+export const buildingReportDefaultValues = {
   title: '',
   description: '',
   location: '',
   imageUrl: '',
-  startDateTime: new Date(),
-  endDateTime: new Date(),
   categoryId: '',
   price: '',
   isFree: false,
