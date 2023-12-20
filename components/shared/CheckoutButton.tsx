@@ -8,12 +8,11 @@ import Checkout from "./Checkout"
 
 const CheckoutButton = ({ report }: { report: IReport }) => {
   const { user } = useUser()
-  const userId = user?.publicMetadata.userIdas as string
+  const userId = user?.publicMetadata.userId as string
 
   const infoDate = new Date(report.infoDate)
   const today = new Date()
   const isReportOutdated = (Math.abs(today.getDate() - infoDate.getDate())) > 1
-
 
   return (
     <div className="flex gap-3 flex-col items-start">

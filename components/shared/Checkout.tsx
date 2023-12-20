@@ -27,9 +27,7 @@ const Checkout = ({ report, userId }: { report: IReport, userId: string }) => {
       isFree: report.isFree,
       buyerId: userId
     }
-
     await checkoutOrder(order)
-    console.log("i'm here 62: checkout")
   }
 
   return (

@@ -6,11 +6,10 @@ import { handleError } from "../utils"
 import { redirect } from "next/navigation"
 import { connectToDatabase } from "../mongodb/database"
 import Order from "../mongodb/database/models/order.model"
-import { report } from "process"
 
 export const checkoutOrder = async(order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
-  const price = order.isFree ? 0 : Number(order.price) * 100
+  const price = order.isFree || !order.price ? 0 : Number(order.price) * 100
   try {
     // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
