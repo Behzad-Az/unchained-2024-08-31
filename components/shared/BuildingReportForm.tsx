@@ -30,7 +30,7 @@ import { useRouter } from "next/navigation"
 import { createBuildingReport } from "@/lib/actions/buildingreports.actions"
 
 type BuildingReportFormProps = {
-  userId: { userId: string }
+  userId: string
   type: "Create" | "Update"
 }
 
@@ -61,7 +61,7 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
       try {
         const newReport = await createBuildingReport({
           buildingReport: { ...values, imgUrl: uploadedImgUrl },
-          userId: userId.userId,
+          userId,
           path: "/profile"
         })
         if (newReport) {
