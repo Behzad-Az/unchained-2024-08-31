@@ -31,6 +31,7 @@ export async function POST(request: Request) {
       createdAt: new Date(),
     }
 
+    // CREATE NEW ORDER
     const newOrder = await createOrder(order)
     return NextResponse.json({ message: 'OK', order: newOrder })
   }
