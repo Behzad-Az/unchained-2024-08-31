@@ -19,7 +19,7 @@ export const buildingReportDefaultValues = {
   location: '',
   infoDate: new Date(),
   imgUrl: '',
-  categoryId: '',
+  category: '',
   price: '',
   isFree: false,
   url: '',

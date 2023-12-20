@@ -101,7 +101,7 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
           />
           <FormField
             control={form.control}
-            name="categoryId"
+            name="category"
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>

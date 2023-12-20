@@ -17,7 +17,7 @@ export const buildingReportFormSchema = z.object({
   
   imgUrl: z.string(),
 
-  categoryId: z.string(),
+  category: z.string(),
 
   price: z.string(),
 

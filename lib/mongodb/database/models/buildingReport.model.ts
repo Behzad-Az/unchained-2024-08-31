@@ -14,7 +14,7 @@ export interface IBuildingReport extends Document {
   isFree: boolean
   url?: string
   category: { _id: string, name: string }
-  submitter: { _id: string, firstName: string, lastName: string }
+  creator: { _id: string, firstName: string, lastName: string }
 }
 
 const BuildingReportSchema = new Schema({
@@ -29,8 +29,8 @@ const BuildingReportSchema = new Schema({
   price: { type: String },
   isFree: { type: Boolean, default: false },
   url: { type: String },
-  categoryId: { type: Schema.Types.ObjectId, ref: "Category" },
-  submitterId: { type: Schema.Types.ObjectId, ref: "User" }
+  category: { type: Schema.Types.ObjectId, ref: "Category" },
+  creator: { type: Schema.Types.ObjectId, ref: "User" }
 })
 
 const BuildingReport = models.BuildingReport || model("BuildingReport", BuildingReportSchema)

@@ -27,7 +27,7 @@ export type CreateBuildingReportParams = {
     price: string
     isFree: boolean
     url: string
-    categoryId: string
+    category: string
   }
   path: string
 }
@@ -44,7 +44,7 @@ export type UpdateBuildingReportParams = {
     price: string
     isFree: boolean
     url: string
-    categoryId: string
+    category: string
   }
   path: string
 }
@@ -57,7 +57,7 @@ export type DeleteBuildingReportParams = {
 export type GetAllBuildingReportsParams = {
   query: string
   category: string
-  limit: number
+  limit?: number
   page: number
 }
 
@@ -68,7 +68,7 @@ export type GetBuildingReportsByUserParams = {
 }
 
 export type GetRelatedBuildingReportsByCategoryParams = {
-  categoryId: string
+  category: string
   buildingReportId: string
   limit?: number
   page: number | string
@@ -84,7 +84,7 @@ export type BuildingReport = {
   location: string
   infoDate: Date
   url: string
-  submitter: {
+  creator: {
     _id: string
     firstName: string
     lastName: string
