@@ -1,4 +1,4 @@
-import EventForm from "@/components/shared/BuildingReportForm"
+import BuildingReportForm from "@/components/shared/BuildingReportForm"
 import { auth } from "@clerk/nextjs"
 
 const UpdateBuildingReport = () => {
@@ -10,7 +10,7 @@ const UpdateBuildingReport = () => {
         <h3 className="wrapper h3-bold text-center sm:text-left">Update Building Report</h3>
       </section>
       <div className="wrapper my-8">
-        <EventForm userId={userId} type="update" />
+        <BuildingReportForm userId={userId} type="Update" />
       </div>
     </>
   )
