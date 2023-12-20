@@ -10,7 +10,7 @@ export interface IReport extends Document {
   deletedAt: Date
   infoDate: Date
   imgUrl: string
-  price?: string
+  price: string
   isFree: boolean
   url?: string
   category: { _id: string, name: string }

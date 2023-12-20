@@ -1,3 +1,4 @@
+import CheckoutButton from "@/components/shared/CheckoutButton"
 import Collection from "@/components/shared/Collection"
 import { getRelatedReportsByCategory, getReportById } from "@/lib/actions/report.actions"
 import { formatDateTime } from "@/lib/utils"
@@ -55,7 +56,9 @@ const ReportDetailsPage = async ({ params: { id }, searchParams}: SearchParamPro
                 </p>
               </div>
             </div>
-            {/* Checkout Button */}
+
+            <CheckoutButton report={report} />
+            
             <div className="flex flex-col gap-5">
               <div className="p-regular-20 flex items-center gap-3">
                 <Image src="/assets/icons/calendar.svg" alt="calendar" width={32} height={32} />
