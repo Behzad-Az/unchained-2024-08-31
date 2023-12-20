@@ -27,24 +27,37 @@ import { Checkbox } from "../ui/checkbox"
 import { useUploadThing } from "@/lib/uploadthing"
 import { handleError } from "@/lib/utils"
 import { useRouter } from "next/navigation"
-import { createReport } from "@/lib/actions/report.actions"
+import { createReport, updateReport } from "@/lib/actions/report.actions"
+import { IReport } from "@/lib/mongodb/database/models/report.model"
 
 type Props = {
   userId: string
-  type: "Create" | "Update"
+  type: "Create" | "Update",
+  report?: IReport
 }
 
-const ReportSubmissionForm = ({ userId, type }: Props) => {
+const ReportForm = ({ userId, type, report }: Props) => {
 
   const [files, setFiles] = useState<File[]>([])
-
+  const defaultValues = report && type === "Update" ?
+    {
+      title: report?.title || "",
+      description: report?.description || "",
+      location: report?.location || "",
+      infoDate: report?.infoDate ? new Date(report.infoDate) : new Date(),
+      imgUrl: report?.imgUrl || "",
+      category: report?.category?._id || "",
+      price: report?.price || "",
+      isFree: report?.isFree || false,
+      url: report?.url || "",
+    } : reportDefaultValues
   const { startUpload } = useUploadThing("imageUploader") 
   const router = useRouter()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof reportFormSchema>>({
     resolver: zodResolver(reportFormSchema),
-    defaultValues: reportDefaultValues
+    defaultValues
   })
 
   // 2. Define a submit handler.
@@ -67,6 +80,26 @@ const ReportSubmissionForm = ({ userId, type }: Props) => {
         if (newReport) {
           form.reset()
           router.push(`/reports/${newReport._id}`)
+        }
+      } catch(error) {
+        handleError(error)
+      }
+    }
+
+    if (type === "Update") {
+      if (!report?._id) {
+        router.back()
+        return
+      }
+      try {
+        const updatedReport = await updateReport({
+          userId,
+          report: { ...values, imgUrl: uploadedImgUrl, _id: report._id },
+          path: `/reports/${report._id}`
+        })
+        if (updatedReport) {
+          form.reset()
+          router.push(`/reports/${updatedReport._id}`)
         }
       } catch(error) {
         handleError(error)
@@ -262,4 +295,4 @@ const ReportSubmissionForm = ({ userId, type }: Props) => {
   )
 }
 
-export default ReportSubmissionForm
+export default ReportForm

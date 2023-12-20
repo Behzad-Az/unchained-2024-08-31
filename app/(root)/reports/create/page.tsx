@@ -1,4 +1,4 @@
-import ReportSubmissionFrom from "@/components/shared/ReportSubmissionForm"
+import ReportSubmissionFrom from "@/components/shared/ReportForm"
 import { auth } from "@clerk/nextjs"
 
 const CreateReport = () => {

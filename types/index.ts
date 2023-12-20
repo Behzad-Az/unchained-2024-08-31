@@ -68,7 +68,7 @@ export type GetReportsByUserParams = {
 }
 
 export type GetRelatedReportsByCategoryParams = {
-  category: string
+  categoryId: string
   reportId: string
   limit?: number
   page: number | string
