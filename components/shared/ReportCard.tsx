@@ -43,10 +43,7 @@ const ReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
           <DeleteConfirmation reportId={_id} />
         </div>
       }
-      <Link 
-        href={`/reports/${_id}`}
-        className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4"
-      >
+      <div className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4">
         {
           !hidePrice &&
           <div className="flex gap-2">
@@ -59,7 +56,9 @@ const ReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
           </div>
         }
         <p className="p-medium-16 md:p-medium-18 text-grey-500">{formatDateTime(infoDate).dateOnly}</p>
-        <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">{title}</p>
+        <Link href={`/reports/${_id}`}>
+          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">{title}</p>
+        </Link>
         <div className="flex-between w-full">
           <p className="p-medium-14 md:p-medium-16 text-grey-600">
             {creator.firstName} {creator.lastName}
@@ -75,7 +74,7 @@ const ReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
             </Link>
           }
         </div>
-      </Link>
+      </div>
     </div>
   )
 }

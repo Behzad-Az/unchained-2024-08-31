@@ -1,7 +1,7 @@
 import ReportSubmissionFrom from "@/components/shared/ReportForm"
 import { auth } from "@clerk/nextjs"
 
-const CreateReport = () => {
+const CreateReportPage = () => {
   const { sessionClaims } = auth()
   const userId = sessionClaims?.userId as string;
   return (
@@ -16,4 +16,4 @@ const CreateReport = () => {
   )
 }
 
-export default CreateReport
+export default CreateReportPage

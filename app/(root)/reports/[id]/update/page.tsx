@@ -8,7 +8,7 @@ type Props = {
   }
 }
 
-const UpdateReport = async ({ params: { id } }: Props) => {
+const UpdateReportPage = async ({ params: { id } }: Props) => {
   const { sessionClaims } = auth()
   const userId = sessionClaims?.userId as string;
   const report = await getReportById(id)
@@ -25,4 +25,4 @@ const UpdateReport = async ({ params: { id } }: Props) => {
   )
 }
 
-export default UpdateReport
+export default UpdateReportPage

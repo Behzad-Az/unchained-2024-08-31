@@ -5,11 +5,11 @@ type Props = {
   data: IReport[]
   emptyTitle: string
   emptyStateSubText: string
-  collectionType: "All_Reports" | "My_Purchased_Reports" | "My_Submitted_Reports"
+  collectionType: "All_Reports" | "My_Purchased_Reports" | "My_Created_Reports"
   limit: number
   page: number | string
   totalPages?: number,
-  urlParamName?: string 
+  urlParamName?: "ordersPage" | "reportsPage" 
 }
 
 const Collection = ({ data, emptyTitle, emptyStateSubText, limit, page, totalPages = 0, collectionType, urlParamName }: Props) => {
@@ -19,7 +19,7 @@ const Collection = ({ data, emptyTitle, emptyStateSubText, limit, page, totalPag
       <ul className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10">
         {
           data.map(report => {
-            const hasOrderLink = collectionType === "My_Submitted_Reports"
+            const hasOrderLink = collectionType === "My_Created_Reports"
             const hidePrice = collectionType === "My_Purchased_Reports"
             return (
               <li key={report._id} className="flex justify-center">

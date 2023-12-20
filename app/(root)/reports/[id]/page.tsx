@@ -4,7 +4,7 @@ import { formatDateTime } from "@/lib/utils"
 import { SearchParamProps } from "@/types"
 import Image from "next/image"
 
-const ReportDetails = async ({ params: { id }, searchParams}: SearchParamProps) => {
+const ReportDetailsPage = async ({ params: { id }, searchParams}: SearchParamProps) => {
   const report = await getReportById(id)
   const relatedReports = await getRelatedReportsByCategory({
     categoryId: report.category._id,
@@ -90,4 +90,4 @@ const ReportDetails = async ({ params: { id }, searchParams}: SearchParamProps) 
   )
 }
 
-export default ReportDetails
+export default ReportDetailsPage
