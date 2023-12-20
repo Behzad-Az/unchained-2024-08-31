@@ -4,7 +4,7 @@ import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { buildingReportFormSchema } from "@/lib/validator"
+import { reportFormSchema } from "@/lib/validator"
 import { Button } from "@/components/ui/button"
 import {
   Form,
@@ -16,10 +16,10 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-import { buildingReportDefaultValues } from "@/constants"
-import BuildingReportCategoryDropdown from "./BuildingReportCategoryDropdown"
+import { reportDefaultValues } from "@/constants"
+import ReportCategoryDropdown from "./ReportCategoryDropdown"
 import { Textarea } from "../ui/textarea"
-import { BuildingReportFileUploader } from "./BuildingReportFileUploader"
+import { ReportFileUploader } from "./ReportFileUploader"
 import Image from "next/image"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
@@ -27,14 +27,14 @@ import { Checkbox } from "../ui/checkbox"
 import { useUploadThing } from "@/lib/uploadthing"
 import { handleError } from "@/lib/utils"
 import { useRouter } from "next/navigation"
-import { createBuildingReport } from "@/lib/actions/buildingreports.actions"
+import { createReport } from "@/lib/actions/report.actions"
 
-type BuildingReportFormProps = {
+type Props = {
   userId: string
   type: "Create" | "Update"
 }
 
-const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
+const ReportSubmissionForm = ({ userId, type }: Props) => {
 
   const [files, setFiles] = useState<File[]>([])
 
@@ -42,13 +42,13 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
   const router = useRouter()
 
   // 1. Define your form.
-  const form = useForm<z.infer<typeof buildingReportFormSchema>>({
-    resolver: zodResolver(buildingReportFormSchema),
-    defaultValues: buildingReportDefaultValues
+  const form = useForm<z.infer<typeof reportFormSchema>>({
+    resolver: zodResolver(reportFormSchema),
+    defaultValues: reportDefaultValues
   })
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof buildingReportFormSchema>) {
+  async function onSubmit(values: z.infer<typeof reportFormSchema>) {
     const formData = values
     let uploadedImgUrl = values.imgUrl
     if (files.length > 0) {
@@ -59,14 +59,14 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
 
     if (type === "Create") {
       try {
-        const newReport = await createBuildingReport({
-          buildingReport: { ...values, imgUrl: uploadedImgUrl },
+        const newReport = await createReport({
+          report: { ...values, imgUrl: uploadedImgUrl },
           userId,
           path: "/profile"
         })
         if (newReport) {
           form.reset()
-          router.push(`/buildingreports/${newReport._id}`)
+          router.push(`/reports/${newReport._id}`)
         }
       } catch(error) {
         handleError(error)
@@ -90,7 +90,7 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
               <FormItem className="w-full">
                 <FormControl>
                   <Input 
-                    placeholder="Building Report Title"
+                    placeholder="Report Title"
                     {...field} 
                     className="input-field"
                   />
@@ -105,7 +105,7 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl>
-                  <BuildingReportCategoryDropdown onChangeHandler={field.onChange} value={field.value} />
+                  <ReportCategoryDropdown onChangeHandler={field.onChange} value={field.value} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -136,7 +136,7 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
             render={({ field }) => (
               <FormItem className="w-full">
                 <FormControl className="h-72">
-                  <BuildingReportFileUploader 
+                  <ReportFileUploader 
                     onFieldChange={field.onChange}
                     imgUrl={field.value}
                     setFiles={setFiles}
@@ -158,7 +158,7 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
                   <div className="flex-center h-[54px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2">
                     <Image src="/assets/icons/location-grey.svg" alt="location" width={24} height={24} />
                     <Input 
-                      placeholder="Building's address"
+                      placeholder="Address"
                       {...field} 
                       className="input-field"
                     />
@@ -255,11 +255,11 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
           disabled={form.formState.isSubmitting}
           className="button col-span-2 w-full"
         >
-          {form.formState.isSubmitting ? "Submitting..." : `${type} Building Report`}
+          {form.formState.isSubmitting ? "Submitting..." : `${type} Report`}
         </Button>
       </form>
     </Form>
   )
 }
 
-export default BuildingReportForm
+export default ReportSubmissionForm

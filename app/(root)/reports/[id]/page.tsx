@@ -1,10 +1,10 @@
-import { getBuildingReportById } from "@/lib/actions/buildingreports.actions"
+import { getReportById } from "@/lib/actions/report.actions"
 import { formatDateTime } from "@/lib/utils"
 import { SearchParamProps } from "@/types"
 import Image from "next/image"
 
-const BuildingReportDetails = async ({ params: { id }}: SearchParamProps) => {
-  const report = await getBuildingReportById(id)
+const ReportDetails = async ({ params: { id }}: SearchParamProps) => {
+  const report = await getReportById(id)
   const {
     imgUrl,
     title,
@@ -71,4 +71,4 @@ const BuildingReportDetails = async ({ params: { id }}: SearchParamProps) => {
   )
 }
 
-export default BuildingReportDetails
+export default ReportDetails

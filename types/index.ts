@@ -15,10 +15,10 @@ export type UpdateUserParams = {
   photo: string
 }
 
-// ====== BUILDING REPORT PARAMS
-export type CreateBuildingReportParams = {
+// ====== REPORT PARAMS
+export type CreateReportParams = {
   userId: string
-  buildingReport: {
+  report: {
     title: string
     description: string
     location: string
@@ -32,9 +32,9 @@ export type CreateBuildingReportParams = {
   path: string
 }
 
-export type UpdateBuildingReportParams = {
+export type UpdateReportParams = {
   userId: string
-  buildingReport: {
+  report: {
     _id: string
     title: string
     description: string
@@ -49,32 +49,32 @@ export type UpdateBuildingReportParams = {
   path: string
 }
 
-export type DeleteBuildingReportParams = {
-  buildingReportId: string
+export type DeleteReportParams = {
+  reportId: string
   path: string
 }
 
-export type GetAllBuildingReportsParams = {
+export type GetAllReportsParams = {
   query: string
   category: string
   limit?: number
   page: number
 }
 
-export type GetBuildingReportsByUserParams = {
+export type GetReportsByUserParams = {
   userId: string
   limit?: number
   page: number
 }
 
-export type GetRelatedBuildingReportsByCategoryParams = {
+export type GetRelatedReportsByCategoryParams = {
   category: string
-  buildingReportId: string
+  reportId: string
   limit?: number
   page: number | string
 }
 
-export type BuildingReport = {
+export type Report = {
   _id: string
   title: string
   description: string
@@ -102,8 +102,8 @@ export type CreateCategoryParams = {
 
 // ====== ORDER PARAMS
 export type CheckoutOrderParams = {
-  buildingReportTitle: string
-  buildingReportId: string
+  reportTitle: string
+  reportId: string
   price: string
   isFree: boolean
   buyerId: string
@@ -111,14 +111,14 @@ export type CheckoutOrderParams = {
 
 export type CreateOrderParams = {
   stripeId: string
-  buildingReportId: string
+  reportId: string
   buyerId: string
   totalAmount: string
   createdAt: Date
 }
 
-export type GetOrdersByBuildingReportParams = {
-  buildingReportId: string
+export type GetOrdersByReportParams = {
+  reportId: string
   searchString: string
 }
 

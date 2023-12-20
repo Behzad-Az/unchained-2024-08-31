@@ -1,12 +1,12 @@
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
-import { getAllBuildingReports } from "@/lib/actions/buildingreports.actions";
+import { getAllReports } from "@/lib/actions/report.actions";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
   
-  const reports = await getAllBuildingReports({
+  const reports = await getAllReports({
     query: "",
     category: "",
     page: 1,
@@ -22,7 +22,7 @@ export default async function Home() {
             <p className="p-regular-20 md:p-regular-24">Real-estate isn't complicated. Yet, a multi-billion dollar industry pretends that it is.</p>
             <p className="p-regular-20 md:p-regular-24">We created self-serve data and AI tools to unchain Vancouverites from the industry.</p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#buildings">Explore Now</Link>
+              <Link href="#reports">Explore Now</Link>
             </Button>
           </div>
           <Image 
@@ -34,7 +34,7 @@ export default async function Home() {
           />
         </div>
       </section>
-      <section id="buildings" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
+      <section id="reports" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold">Trusted by <br /> Thousands of Users</h2>
         <div className="flex w-full flex-col gap-5 md:flex-row">
           Search
@@ -44,7 +44,7 @@ export default async function Home() {
           data={reports?.data}
           emptyTitle="No reports found"
           emptyStateSubText="Come back later"
-          collectionType="All_Building_Reports"
+          collectionType="All_Reports"
           limit={6}
           page={1}
           totalPages={reports?.totalPages}

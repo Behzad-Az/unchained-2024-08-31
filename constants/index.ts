@@ -4,8 +4,8 @@ export const headerLinks = [
     route: '/',
   },
   {
-    label: 'Building Report',
-    route: '/buildingreports/create',
+    label: 'Create New Report',
+    route: '/reports/create',
   },
   {
     label: 'My Profile',
@@ -13,7 +13,7 @@ export const headerLinks = [
   },
 ]
 
-export const buildingReportDefaultValues = {
+export const reportDefaultValues = {
   title: '',
   description: '',
   location: '',

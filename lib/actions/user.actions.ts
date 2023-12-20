@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache'
 import { connectToDatabase } from "../mongodb/database"
 import User from "../mongodb/database/models/user.model"
 import Order from "../mongodb/database/models/order.model"
-import BuildingReport from "../mongodb/database/models/buildingReport.model"
+import Report from "../mongodb/database/models/report.model"
 import { handleError } from '@/lib/utils'
 
 import { CreateUserParams, UpdateUserParams } from '@/types'

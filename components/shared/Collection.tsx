@@ -1,11 +1,11 @@
-import { IBuildingReport } from "@/lib/mongodb/database/models/buildingReport.model"
-import BuildingReportCard from "./BuildingReportCard"
+import { IReport } from "@/lib/mongodb/database/models/report.model"
+import ReportCard from "./ReportCard"
 
 type Props = {
-  data: IBuildingReport[]
+  data: IReport[]
   emptyTitle: string
   emptyStateSubText: string
-  collectionType: "All_Building_Reports" | "My_Purchased_Reports" | "My_Submitted_Reports"
+  collectionType: "All_Reports" | "My_Purchased_Reports" | "My_Submitted_Reports"
   limit: number
   page: number | string
   totalPages?: number,
@@ -23,7 +23,7 @@ const Collection = ({ data, emptyTitle, emptyStateSubText, limit, page, totalPag
             const hidePrice = collectionType === "My_Purchased_Reports"
             return (
               <li key={report._id} className="flex justify-center">
-                <BuildingReportCard report={report} hasOrderLink={hasOrderLink} hidePrice={hidePrice} />
+                <ReportCard report={report} hasOrderLink={hasOrderLink} hidePrice={hidePrice} />
               </li>
             )
           })

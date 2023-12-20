@@ -1,6 +1,6 @@
 import { Document, Schema, models, model } from "mongoose"
 
-export interface IBuildingReport extends Document {
+export interface IReport extends Document {
   _id: string
   title: string
   description?: string
@@ -17,7 +17,7 @@ export interface IBuildingReport extends Document {
   creator: { _id: string, firstName: string, lastName: string }
 }
 
-const BuildingReportSchema = new Schema({
+const ReportSchema = new Schema({
   title: { type: String, required: true },
   description: { type: String },
   location: { type: String },
@@ -33,6 +33,6 @@ const BuildingReportSchema = new Schema({
   creator: { type: Schema.Types.ObjectId, ref: "User" }
 })
 
-const BuildingReport = models.BuildingReport || model("BuildingReport", BuildingReportSchema)
+const Report = models.Report || model("Report", ReportSchema)
 
-export default BuildingReport
+export default Report

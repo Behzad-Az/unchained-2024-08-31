@@ -1,9 +1,9 @@
 "use server"
 
-import { CreateBuildingReportParams, GetAllBuildingReportsParams } from "@/types"
+import { CreateReportParams, GetAllReportsParams } from "@/types"
 import { connectToDatabase } from "../mongodb/database"
 import User from "../mongodb/database/models/user.model"
-import BuildingReport from "../mongodb/database/models/buildingReport.model"
+import Report from "../mongodb/database/models/report.model"
 import Category from "../mongodb/database/models/category.model"
 import { handleError } from "../utils"
 
@@ -13,45 +13,45 @@ const populateData = (query: any) => {
     .populate({ path: 'category', model: Category, select: '_id name' })
 }
 
-export const createBuildingReport = async ({ buildingReport, userId, path }: CreateBuildingReportParams) => {
+export const createReport = async ({ report, userId, path }: CreateReportParams) => {
   try {
     await connectToDatabase()
     const creator = await User.findById(userId)
     if (!creator) {
       throw new Error("Creator not found")
     }
-    const newBuildingReport = await BuildingReport.create({ ...buildingReport, creator: userId })
-    return JSON.parse(JSON.stringify(newBuildingReport))
+    const newReport = await Report.create({ ...report, creator: userId })
+    return JSON.parse(JSON.stringify(newReport))
   } catch (error) {
 
   }
 }
 
-export const getBuildingReportById = async (buildingReportId: string) => {
+export const getReportById = async (reportId: string) => {
   try {
     await connectToDatabase()
-    const buildingReport = await populateData(BuildingReport.findById(buildingReportId))
-    if (!buildingReport) {
-      throw new Error(`Building report with id ${buildingReportId} not found`)
+    const report = await populateData(Report.findById(reportId))
+    if (!report) {
+      throw new Error(`Report with id ${reportId} not found`)
     }
-    return JSON.parse(JSON.stringify(buildingReport))
+    return JSON.parse(JSON.stringify(report))
   } catch (error) {
     handleError(error)
   }
 }
 
-export const getAllBuildingReports = async ({ query, limit = 6, page, category }: GetAllBuildingReportsParams) => {
+export const getAllReports = async ({ query, limit = 6, page, category }: GetAllReportsParams) => {
   try {
     await connectToDatabase()
     const conditions = {}
-    const reportsQuery = BuildingReport
+    const reportsQuery = Report
       .find(conditions)
       .sort({ createdAt: "desc" })
       .skip(0)
       .limit(limit)
 
     const reports = await populateData(reportsQuery)
-    // const reportsCount = await BuildingReport.countDocuments(conditions)
+    // const reportsCount = await Report.countDocuments(conditions)
     const reportsCount = reports.length
     
     return {

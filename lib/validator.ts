@@ -1,6 +1,6 @@
 import * as z from "zod"
 
-export const buildingReportFormSchema = z.object({
+export const reportFormSchema = z.object({
 
   title: z.string()
   .min(3, { message: "Title must be at least 3 characters" }),

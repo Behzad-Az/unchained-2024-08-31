@@ -1,16 +1,16 @@
-import { IBuildingReport } from "@/lib/mongodb/database/models/buildingReport.model"
+import { IReport } from "@/lib/mongodb/database/models/report.model"
 import { formatDateTime } from "@/lib/utils"
 import { auth } from "@clerk/nextjs"
 import Image from "next/image"
 import Link from "next/link"
 
 type Props = {
-  report: IBuildingReport
+  report: IReport
   hasOrderLink?: Boolean
   hidePrice?: Boolean
 }
 
-const BuildingReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
+const ReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
   const {
     _id,
     title,
@@ -30,13 +30,13 @@ const BuildingReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
   return (
     <div className="group relative flex min-h-[300px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
       <Link 
-        href={`/buildingreports/${_id}`}
+        href={`/reports/${_id}`}
         style={{ backgroundImage: `url(${imgUrl})` }}
         className="flex-center flex-grow bg-grey-50 bg-cover bg-center text-grey-500"
       />
       {/* Is event creator */}
       <Link 
-        href={`/buildingreports/${_id}`}
+        href={`/reports/${_id}`}
         className="flex min-h-[230px] flex-col gap-3 p-5 md:gap-4"
       >
         {
@@ -59,7 +59,7 @@ const BuildingReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
           {
             hasOrderLink &&
             <Link 
-              href={`/orders?buildingreportId=${_id}`}
+              href={`/orders?reportId=${_id}`}
               className="flex gap-2"
             >
               <p className="text-primary-500">Order Details</p>
@@ -72,4 +72,4 @@ const BuildingReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
   )
 }
 
-export default BuildingReportCard
+export default ReportCard

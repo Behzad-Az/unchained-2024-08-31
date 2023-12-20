@@ -14,7 +14,7 @@ type Props = {
   setFiles: Dispatch<SetStateAction<File[]>>
 }
 
-export function BuildingReportFileUploader({ imgUrl, onFieldChange, setFiles }: Props) {
+export function ReportFileUploader({ imgUrl, onFieldChange, setFiles }: Props) {
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     setFiles(acceptedFiles)
     onFieldChange(convertFileToUrl(acceptedFiles[0]))
