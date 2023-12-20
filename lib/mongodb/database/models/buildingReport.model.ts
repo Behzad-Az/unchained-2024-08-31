@@ -9,7 +9,7 @@ export interface IBuildingReport extends Document {
   updatedAt: Date
   deletedAt: Date
   infoDate: Date
-  imageUrl: string
+  imgUrl: string
   price?: string
   isFree: boolean
   url?: string
@@ -25,7 +25,7 @@ const BuildingReportSchema = new Schema({
   updatedAt: { type: Date },
   deletedAt: { type: Date },
   infoDate: { type: Date },
-  imageUrl: { type: String, required: true },
+  imgUrl: { type: String, required: true },
   price: { type: String },
   isFree: { type: Boolean, default: false },
   url: { type: String },

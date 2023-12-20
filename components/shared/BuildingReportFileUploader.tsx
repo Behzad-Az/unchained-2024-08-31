@@ -8,13 +8,13 @@ import { generateClientDropzoneAccept } from 'uploadthing/client'
 import { Button } from '@/components/ui/button'
 import { convertFileToUrl } from '@/lib/utils'
 
-type FileUploaderProps = {
+type Props = {
   onFieldChange: (url: string) => void
   imgUrl: string
   setFiles: Dispatch<SetStateAction<File[]>>
 }
 
-export function BuildingReportFileUploader({ imgUrl, onFieldChange, setFiles }: FileUploaderProps) {
+export function BuildingReportFileUploader({ imgUrl, onFieldChange, setFiles }: Props) {
   const onDrop = useCallback((acceptedFiles: FileWithPath[]) => {
     setFiles(acceptedFiles)
     onFieldChange(convertFileToUrl(acceptedFiles[0]))

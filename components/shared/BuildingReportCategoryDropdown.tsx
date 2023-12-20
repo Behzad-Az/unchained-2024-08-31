@@ -28,10 +28,7 @@ type DropdownProps = {
 }
 
 const BuildingReportCategoryDropdown = ({ onChangeHandler, value }: DropdownProps) => {
-  const [categories, setCategories] = useState<ICategory[]>([
-    // {_id: "1", name: "Category 1"},
-    // {_id: "2", name: "Category 2"},
-  ])
+  const [categories, setCategories] = useState<ICategory[]>([])
   const [newCategory, setNewCategory] = useState<string>("")
 
   const handleAddCategory = () => {

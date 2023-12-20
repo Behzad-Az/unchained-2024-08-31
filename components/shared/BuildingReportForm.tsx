@@ -24,15 +24,22 @@ import Image from "next/image"
 import DatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import { Checkbox } from "../ui/checkbox"
+import { useUploadThing } from "@/lib/uploadthing"
+import { handleError } from "@/lib/utils"
+import { useRouter } from "next/navigation"
+import { createBuildingReport } from "@/lib/actions/buildingreports.actions"
 
 type BuildingReportFormProps = {
-  userId: string
-  type: "Upload" | "Update"
+  userId: { userId: string }
+  type: "Create" | "Update"
 }
 
 const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
 
   const [files, setFiles] = useState<File[]>([])
+
+  const { startUpload } = useUploadThing("imageUploader") 
+  const router = useRouter()
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof buildingReportFormSchema>>({
@@ -41,10 +48,32 @@ const BuildingReportForm = ({ userId, type }: BuildingReportFormProps) => {
   })
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof buildingReportFormSchema>) {
+  async function onSubmit(values: z.infer<typeof buildingReportFormSchema>) {
+    const formData = values
+    let uploadedImgUrl = values.imgUrl
+    if (files.length > 0) {
+      const uploadedImages = await startUpload(files)
+      if (!uploadedImages) return
+      uploadedImgUrl = uploadedImages[0].url
+    }
+
+    if (type === "Create") {
+      try {
+        const newReport = await createBuildingReport({
+          buildingReport: { ...values, imgUrl: uploadedImgUrl },
+          userId: userId.userId,
+          path: "/profile"
+        })
+        if (newReport) {
+          form.reset()
+          router.push(`/buildingreports/${newReport._id}`)
+        }
+      } catch(error) {
+        handleError(error)
+      }
+    }
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values)
   }
 
   return (
