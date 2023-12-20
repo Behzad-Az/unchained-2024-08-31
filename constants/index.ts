@@ -17,6 +17,7 @@ export const buildingReportDefaultValues = {
   title: '',
   description: '',
   location: '',
+  infoDate: new Date(),
   imageUrl: '',
   categoryId: '',
   price: '',

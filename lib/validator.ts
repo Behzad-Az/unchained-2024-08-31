@@ -13,6 +13,8 @@ export const buildingReportFormSchema = z.object({
   .min(3, { message: "Location must be at least 3 characters" })
   .max(100, { message: "Description must be less than 100 characters" }),
 
+  infoDate: z.date(),
+  
   imgUrl: z.string(),
 
   categoryId: z.string(),

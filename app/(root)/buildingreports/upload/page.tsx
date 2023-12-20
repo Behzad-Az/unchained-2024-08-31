@@ -10,7 +10,7 @@ const UploadBuildingReport = () => {
         <h3 className="wrapper h3-bold text-center sm:text-left">Upload Building Report</h3>
       </section>
       <div className="wrapper my-8">
-        <BuildingReportForm userId={userId} type="upload" />
+        <BuildingReportForm userId={userId} type="Upload" />
       </div>
     </>
   )

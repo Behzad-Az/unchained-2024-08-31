@@ -22,6 +22,7 @@ export type CreateBuildingReportParams = {
     title: string
     description: string
     location: string
+    infoDate: Date
     imageUrl: string
     price: string
     isFree: boolean
@@ -38,6 +39,7 @@ export type UpdateBuildingReportParams = {
     title: string
     description: string
     location: string
+    infoDate: Date
     imageUrl: string
     price: string
     isFree: boolean
@@ -80,8 +82,7 @@ export type BuildingReport = {
   isFree: boolean
   imageUrl: string
   location: string
-  startDateTime: Date
-  endDateTime: Date
+  infoDate: Date
   url: string
   submitter: {
     _id: string
