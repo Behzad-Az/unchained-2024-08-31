@@ -10,23 +10,25 @@ import Order from "../mongodb/database/models/order.model"
 export const checkoutOrder = async(order: CheckoutOrderParams) => {
   const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!);
   const price = order.isFree || !order.price ? 0 : Number(order.price) * 100
+  const price_data = {
+    currency: "cad",
+    unit_amount: price,
+    product_data: { name: order.reportTitle }
+  }
+  const metadata = {
+    reportId: order.reportId,
+    buyerId: order.buyerId
+  }
   try {
     // Create Checkout Sessions from body params.
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price_data: {
-            currency: "cad",
-            unit_amount: price,
-            product_data: { name: order.reportTitle }
-          },
+          price_data,
           quantity: 1
         },
       ],
-      metadata: {
-        reportId: order.reportId,
-        buyerId: order.buyerId
-      },
+      metadata,
       mode: 'payment',
       // automatic_tax: { enabled: true },
       success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/profile`,

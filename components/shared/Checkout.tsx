@@ -15,7 +15,7 @@ const Checkout = ({ report, userId }: { report: IReport, userId: string }) => {
     }
 
     if (query.get('canceled')) {
-      console.log('Order canceled -- continue to shop around and checkout when you’re ready.');
+      console.log("Order canceled -- continue to shop around and checkout when you're ready.");
     }
   }, []);
   
