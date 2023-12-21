@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   title: 'Unchained',
   description: 'Unchained is a good platform',
   icons: {
-    icon: '/assets/images/logo.svg'
+    icon: '/assets/images/logo-21re.svg'
   }
 }
 

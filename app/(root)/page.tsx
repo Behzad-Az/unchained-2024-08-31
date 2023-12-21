@@ -4,6 +4,7 @@ import TestimonialSlider from "@/components/shared/TestimonialSlider";
 import { getAllReports } from "@/lib/actions/report.actions";
 import Image from "next/image";
 import Link from "next/link";
+import ChatBox from "@/components/shared/ChatBox";
 
 export default async function HomePage() {
   
@@ -16,6 +17,18 @@ export default async function HomePage() {
 
   return (
     <>
+      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
+        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+          <div className="flex flex-col justify-center gap-8">
+            <h1 className="h1-bold">Try it here! No login required.</h1>
+            <p className="p-regular-20 md:p-regular-24">New buildings are added daily.</p>
+            <Button size="lg" asChild className="button w-full sm:w-fit">
+              <Link href="#reports">Explore More</Link>
+            </Button>
+          </div>
+          <ChatBox />
+        </div>
+      </section>
       <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
@@ -51,7 +64,6 @@ export default async function HomePage() {
           totalPages={reports?.totalPages}
         />
       </section>
-      
       <TestimonialSlider />
     </>
   );
