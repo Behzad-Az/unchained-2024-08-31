@@ -8,7 +8,7 @@ const Footer = () => {
         <Link href="/">
           <Image src="/assets/images/logo-21re.svg" alt="logo" width={128} height={38} />
         </Link>
-        <p>2023 Unchained All Rights Reserved.</p>
+        <p>2023 21.R.E. All Rights Reserved.</p>
       </div>
     </footer>
   )

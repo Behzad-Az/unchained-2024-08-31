@@ -10,8 +10,8 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'Unchained',
-  description: 'Unchained is a good platform',
+  title: '21.R.E',
+  description: 'Bringing real estate out of the dark ages',
   icons: {
     icon: '/assets/images/logo-21re.svg'
   }
