@@ -112,7 +112,7 @@ export async function createReport({ userId, report, path }: CreateReportParams)
     await connectToDatabase()
 
     const creator = await User.findById(userId)
-    if (!creator) throw new Error('Organizer not found')
+    if (!creator) throw new Error('Creator not found')
 
     const newReport = await Report.create({ ...report, creator: userId })
     revalidatePath(path)
@@ -202,7 +202,7 @@ export async function getAllReports({ query, limit = 6, page, category }: GetAll
   }
 }
 
-// GET EVENTS BY ORGANIZER
+// GET EVENTS BY CREATOR
 export async function getReportsByUser({ userId, limit = 6, page }: GetReportsByUserParams) {
   try {
     await connectToDatabase()

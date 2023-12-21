@@ -28,11 +28,11 @@ const ReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
   const isReportCreator = userId === creator._id.toString()
 
   return (
-    <div className="group relative flex min-h-[300px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
+    <div className="group relative flex min-h-[380px] w-full max-w-[400px] flex-col overflow-hidden rounded-xl bg-white shadow-md transition-all hover:shadow-lg md:min-h-[438px]">
       <Link 
         href={`/reports/${_id}`}
         style={{ backgroundImage: `url(${imgUrl})` }}
-        className="flex-center flex-grow bg-grey-50 bg-cover bg-center text-grey-500"
+        className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
       />
       {
         isReportCreator && !hidePrice &&
@@ -55,9 +55,13 @@ const ReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
             </p>
           </div>
         }
-        <p className="p-medium-16 md:p-medium-18 text-grey-500">{formatDateTime(infoDate).dateOnly}</p>
+        <p className="p-medium-16 md:p-medium-18 text-grey-500">
+          {formatDateTime(infoDate).dateOnly}
+        </p>
         <Link href={`/reports/${_id}`}>
-          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">{title}</p>
+          <p className="p-medium-16 md:p-medium-20 line-clamp-2 flex-1 text-black">
+            {title}
+          </p>
         </Link>
         <div className="flex-between w-full">
           <p className="p-medium-14 md:p-medium-16 text-grey-600">

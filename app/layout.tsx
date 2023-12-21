@@ -10,7 +10,7 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: '21.R.E',
+  title: '21.R.E.',
   description: 'Bringing real estate out of the dark ages',
   icons: {
     icon: '/assets/images/logo-21re.svg'
