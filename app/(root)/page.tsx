@@ -5,14 +5,19 @@ import { getAllReports } from "@/lib/actions/report.actions";
 import Image from "next/image";
 import Link from "next/link";
 import ChatBox from "@/components/shared/ChatBox";
+import Search from "@/components/shared/Search";
+import { SearchParamProps } from "@/types";
 
-export default async function HomePage() {
-  
+export default async function HomePage({ searchParams }: SearchParamProps) {
+  const page = Number(searchParams?.page) || 1
+  const query = (searchParams?.query as string) || ""
+  const category = (searchParams?.category as string) || ""
+
   const reports = await getAllReports({
-    query: "",
-    category: "",
-    page: 1,
-    // limit: 6
+    query,
+    category,
+    page,
+    limit: 6
   })
 
   return (
@@ -51,7 +56,7 @@ export default async function HomePage() {
       <section id="reports" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
         <h2 className="h2-bold">Trusted by <br /> Thousands of Users</h2>
         <div className="flex w-full flex-col gap-5 md:flex-row">
-          Search
+          <Search placeHolder="Search by address..." />
           Category
         </div>
         <Collection

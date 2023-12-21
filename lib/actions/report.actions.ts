@@ -173,7 +173,7 @@ export async function deleteReport({ reportId, path }: DeleteReportParams) {
   }
 }
 
-// GET ALL EVENTS
+// GET ALL REPORTS
 export async function getAllReports({ query, limit = 6, page, category }: GetAllReportsParams) {
   try {
     await connectToDatabase()
