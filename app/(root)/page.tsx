@@ -1,5 +1,6 @@
 import Collection from "@/components/shared/Collection";
 import { Button } from "@/components/ui/button";
+import TestimonialSlider from "@/components/shared/TestimonialSlider";
 import { getAllReports } from "@/lib/actions/report.actions";
 import Image from "next/image";
 import Link from "next/link";
@@ -50,6 +51,8 @@ export default async function HomePage() {
           totalPages={reports?.totalPages}
         />
       </section>
+      
+      <TestimonialSlider />
     </>
   );
 };
