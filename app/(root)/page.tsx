@@ -69,7 +69,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
       <Separator />
       <section id="one-pager" className="wrapper py-8 flex flex-col gap-8 md:gap-12 bg-dotted-pattern bg-contain">
         <h1 className="h1-bold">1-Pager</h1>
-        <h3 className="h3-bold">All the crucial facts for your condo buying decision.</h3>
+        <h3 className="h3-bold">AI generated fact sheets for your condo buying decision.</h3>
         <p className="p-regular-18 md:p-regular-20">
           Our AI analyzes thousands of strata documents and user questions daily to summarize the latest relevant building facts in plain language on a concise one-pager.
         </p>
@@ -126,6 +126,9 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           <p className="p-regular-18 md:p-regular-20">
             We asked around our family and friends, and soon realized that most of our peers felt the same way! So we set out on leveraging data and AI technologies to create self-serve tools to help average Vancouverites navigate real-estate transactions on their own better, quicker, and more conveniently than before.
           </p>
+          <Button size="lg" asChild className="button w-full sm:w-fit">
+            <Link href="/sign-in">Join Now</Link>
+          </Button>
         </div>
       </section>
     </>

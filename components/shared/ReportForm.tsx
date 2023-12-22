@@ -62,7 +62,6 @@ const ReportForm = ({ userId, type, report }: Props) => {
 
   // 2. Define a submit handler.
   async function onSubmit(values: z.infer<typeof reportFormSchema>) {
-    const formData = values
     let uploadedImgUrl = values.imgUrl
     if (files.length > 0) {
       const uploadedImages = await startUpload(files)
