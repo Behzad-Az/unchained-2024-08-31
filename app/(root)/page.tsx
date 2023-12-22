@@ -8,6 +8,7 @@ import ChatBox from "@/components/shared/ChatBox";
 import Search from "@/components/shared/Search";
 import { SearchParamProps } from "@/types";
 import CategoryFilter from "@/components/shared/CategoryFilter";
+import { Separator } from "@/components/ui/separator";
 
 export default async function HomePage({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1
@@ -46,19 +47,20 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           />
         </div>
       </section>
+      <Separator />
       <section id="demo" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Condo Whisperer</h1>
             <h3 className="h3-bold">Demo it here. No login required.</h3>
-            <p className="p-regular-20 md:p-regular-24">
+            <p className="p-regular-18 md:p-regular-24">
               As a homebuyer, resident, or curious Vancouverite, you should stay informed about what's happening inside the city's condos. We created an AI Chatbox to tell the unbiased, relevant and accurate story of every building.
             </p>
-            <p className="p-regular-20 md:p-regular-24">
+            <p className="p-regular-18 md:p-regular-24">
               Today's sample building is 909 Mainland Street. Use our AI Chatbot to learn everything you need about this building.
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="/sign-in">Login for full access</Link>
+              <Link href="/sign-in">Get Full Access</Link>
             </Button>
           </div>
           <ChatBox />
@@ -79,8 +81,16 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           <ChatBox />
         </div>
       </section> */}
-      <section id="reports" className="wrapper my-8 flex flex-col gap-8 md:gap-12 bg-primary-50">
-        <h2 className="h2-bold">Get your AI powered condo summary report for only $5</h2>
+      <Separator />
+      <section id="one-pager" className="wrapper py-8 flex flex-col gap-8 md:gap-12">
+        <h1 className="h1-bold">1-Pager</h1>
+        <h3 className="h3-bold">All the crucial facts for your condo buying decision.</h3>
+        <p className="p-regular-18 md:p-regular-24">
+          Our AI analyzes thousands of strata documents and user questions daily to summarize the latest relevant building facts in plain language on a concise one-pager.
+        </p>
+        <Button size="lg" asChild className="button w-full sm:w-fit">
+          <Link href="/sign-in">Browse 1-Pagers</Link>
+        </Button>
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search placeHolder="Search by address..." />
           <CategoryFilter />
@@ -95,6 +105,29 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           totalPages={reports?.totalPages}
         />
       </section>
+      <Separator />
+      <section id="lifesaver" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+          <div className="flex flex-col justify-center gap-8">
+            <h1 className="h1-bold">Lifesaver 2.0</h1>
+            <h3 className="h3-bold">Know what to check when you view the condo.</h3>
+            <p className="p-regular-18 md:p-regular-24">
+              Over 50 simple checklist items compiled from 100s of inspectors, contractors and investors to avoid future “how did we miss this” moments.
+            </p>
+            <Button size="lg" asChild className="button w-full sm:w-fit">
+              <Link href="/sign-in">Get Your Free Copy</Link>
+            </Button>
+          </div>
+          <Image 
+            src="/assets/images/documents.jpeg" 
+            alt="hero"
+            width={1000} 
+            height={1000} 
+            className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh] rounded-xl"
+          />
+        </div>
+      </section>
+      <Separator />
       <TestimonialSlider />
     </>
   );

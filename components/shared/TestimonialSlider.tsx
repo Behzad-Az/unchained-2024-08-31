@@ -12,7 +12,7 @@ const SliderItem = ({ submitter, content }: { submitter: string, content: string
 
 const TestimonialSlider = () => {
   return (
-    <section className="w-full bg-primary-50 bg-dotted-pattern bg-contain py-8 px-2 sm:px-8">
+    <section className="w-full bg-yellow-500 bg-dotted-pattern bg-contain py-8 px-2 sm:px-8">
       <Carousel 
         wrapAround
         defaultControlsConfig={{
