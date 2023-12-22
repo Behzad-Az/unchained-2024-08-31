@@ -6,7 +6,7 @@ import { testimonials } from "@/constants"
 const SliderItem = ({ submitter, content }: { submitter: string, content: string}) => (
   <div className="px-10 sm:px-16 lg:px-[150px] xl:px-[250px] flex flex-col justify-center h-full pb-10">
     <p className="text-center p-regular-18 md:p-regular-20 font-semibold">" {content} "</p>
-    <p className="p-regular-12 md:p-regular-16 text-center text-base mt-5">{submitter}</p>
+    <p className="p-regular-14 md:p-regular-16 text-center text-base mt-5">{submitter}</p>
   </div>
 );
 

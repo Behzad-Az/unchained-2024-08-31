@@ -29,7 +29,7 @@ const ChatLine = ({ content, sender }: { content: string, sender: "gpt" | "user"
 
 const ChatBox = () => {
   return (
-    <div className="w-full flex min-h-[500px] max-h-[800px] flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg px-3 py-3 gap-3 overflow-scroll">
+    <div className="w-full flex min-h-[400px] max-h-[600px] flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg px-3 py-3 gap-3 overflow-scroll">
       <div className="flex-center min-h-[40px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2 opacity-90">
         <Image src="/assets/icons/conversation.svg" alt="chat" width={22} height={22} />
         <Input 

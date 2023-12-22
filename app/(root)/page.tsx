@@ -76,19 +76,21 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <Button size="lg" asChild className="button w-full sm:w-fit">
           <Link href="/sign-in">Browse 1-Pagers</Link>
         </Button>
-        <div className="flex w-full flex-col gap-5 md:flex-row">
-          <Search placeHolder="Search by address..." />
-          <CategoryFilter />
-        </div>
-        <Collection
-          data={reports?.data}
-          emptyTitle="No reports found"
-          emptyStateSubText="Come back later"
-          collectionType="All_Reports"
-          limit={6}
-          page={page}
-          totalPages={reports?.totalPages}
-        />
+        <div className="ring-1 ring-offset-8 rounded ring-gray-300 flex flex-col gap-8 md:gap-12 bg-white">
+          <div className="flex w-full flex-col gap-5 md:flex-row">
+            <Search placeHolder="Search by address..." />
+            <CategoryFilter />
+          </div>
+          <Collection
+            data={reports?.data}
+            emptyTitle="No reports found"
+            emptyStateSubText="Come back later"
+            collectionType="All_Reports"
+            limit={6}
+            page={page}
+            totalPages={reports?.totalPages}
+            />
+          </div>
       </section>
       <Separator />
       <section id="lifesaver" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
