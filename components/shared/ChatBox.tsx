@@ -40,7 +40,7 @@ const ChatBox = () => {
         />
       </div>
       {
-        mockChatLog.reverse().map((chat, index) => <ChatLine {...chat} />)
+        mockChatLog.reverse().map((chat, index) => <ChatLine key={index} {...chat} />)
       }
     </div>
   )
