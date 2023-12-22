@@ -3,6 +3,15 @@ import { getOrdersByReport } from "@/lib/actions/order.actions"
 import { IOrderItem } from "@/lib/mongodb/database/models/order.model"
 import { formatDateTime, formatPrice } from "@/lib/utils"
 import { SearchParamProps } from "@/types"
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table"
 
 const OrdersPage = async({ searchParams }: SearchParamProps) => {
   const reportId = (searchParams?.reportId as string) || ''
@@ -19,46 +28,41 @@ const OrdersPage = async({ searchParams }: SearchParamProps) => {
         <Search placeHolder="Search buyer name..." />
       </section>
       <section className="wrapper overflow-x-auto">
-        <table className="w-full border-collapse border-t">
-          <thead>
-            <tr className="p-medium-14 border-b text-grey-500">
-              <th className="min-w-[250px] py-3 text-left">Order ID</th>
-              <th className="min-w-[200px] flex-1 py-3 pr-4 text-left">Event Title</th>
-              <th className="min-w-[150px] py-3 text-left">Buyer</th>
-              <th className="min-w-[100px] py-3 text-left">Created</th>
-              <th className="min-w-[100px] py-3 text-right">Amount</th>
-            </tr>
-          </thead>
-          <tbody>
-            {orders && orders.length === 0 ? (
-              <tr className="border-b">
-                <td colSpan={5} className="py-4 text-center text-gray-500">
-                  No orders found.
-                </td>
-              </tr>
-            ) : (
-              <>
-                {orders &&
-                  orders.map((row: IOrderItem) => (
-                    <tr
-                      key={row._id}
-                      className="p-regular-14 lg:p-regular-16 border-b hover:bg-grey-50"
-                      style={{ boxSizing: 'border-box' }}>
-                      <td className="min-w-[250px] py-4 text-primary-500">{row._id}</td>
-                      <td className="min-w-[200px] flex-1 py-4 pr-4">{row.reportTitle}</td>
-                      <td className="min-w-[150px] py-4">{row.buyer}</td>
-                      <td className="min-w-[100px] py-4">
-                        {formatDateTime(row.createdAt).dateTime}
-                      </td>
-                      <td className="min-w-[100px] py-4 text-right">
-                        {formatPrice(row.totalAmount)}
-                      </td>
-                    </tr>
+        <Table>
+          <TableCaption>A list of your recent invoices.</TableCaption>
+          <TableHeader>
+            <TableRow>
+              <TableHead className="w-[100px]">Order ID</TableHead>
+              <TableHead>Event Tittle</TableHead>
+              <TableHead>Buyer</TableHead>
+              <TableHead>Created</TableHead>
+              <TableHead className="text-right">Amount</TableHead>
+            </TableRow>
+          </TableHeader>
+          <TableBody>
+            {
+              orders && orders.length === 0 ?
+              (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center text-gray-500">No orders found.</TableCell>
+                </TableRow>
+              ) :
+              (
+                <>
+                  {orders.map((order: IOrderItem) => (
+                    <TableRow key={order._id}>
+                      <TableCell className="font-medium text-primary-500">{order._id}</TableCell>
+                      <TableCell>{order.reportTitle}</TableCell>
+                      <TableCell>{order.buyer}</TableCell>
+                      <TableCell>{formatDateTime(order.createdAt).dateOnly}</TableCell>
+                      <TableCell className="text-right">{formatPrice(order.totalAmount)}</TableCell>
+                  </TableRow>
                   ))}
-              </>
-            )}
-          </tbody>
-        </table>
+                </>
+              )
+            }
+          </TableBody>
+        </Table>
       </section>
     </>
   )

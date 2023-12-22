@@ -18,7 +18,7 @@ const CheckoutButton = ({ report }: { report: IReport }) => {
     <div className="flex gap-3 flex-col items-start">
       <SignedOut>
         <Button asChild className="button rounded-full" size="lg">
-          <Link href="/signin">Get Report</Link>
+          <Link href="/sign-in">Get Report</Link>
         </Button>
       </SignedOut>
       <SignedIn>

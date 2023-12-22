@@ -30,7 +30,15 @@ const ChatLine = ({ content, sender }: { content: string, sender: "gpt" | "user"
 const ChatBox = () => {
   return (
     <div className="w-full flex flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg h-[400px] px-3 py-3 gap-3 overflow-scroll">
-      <Input disabled style={{ backgroundColor: "white" }} placeholder="Ask me anything about 909 Mainland St" />
+      <div className="flex-center min-h-[40px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2 opacity-90">
+        <Image src="/assets/icons/conversation.svg" alt="chat" width={22} height={22} />
+        <Input 
+          type="text"
+          placeholder="Ask me anything about 909 Mainland St"
+          disabled 
+          className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+        />
+      </div>
       {
         mockChatLog.reverse().map((chat, index) => <ChatLine {...chat} />)
       }

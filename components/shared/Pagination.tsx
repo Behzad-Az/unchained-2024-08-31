@@ -29,21 +29,20 @@ const Pagination = ({ urlParamName, page, totalPages }: Props) => {
       <Button
         size="lg"
         variant="outline"
-        className="w-8 px-6"
+        className="w-28"
         onClick={() => onClick("prev")}
         disabled={Number(page) <= 1}
       >
-        {"<"}
+        Previous
       </Button>
-      Pagination
       <Button
         size="lg"
         variant="outline"
-        className="w-8 px-6"
+        className="w-28"
         onClick={() => onClick("next")}
         disabled={Number(page) >= totalPages}
       >
-        {">"}
+        Next
       </Button>
     </div>
   )
