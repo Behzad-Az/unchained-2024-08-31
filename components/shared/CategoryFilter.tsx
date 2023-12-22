@@ -46,7 +46,7 @@ const CategoryFilter = () => {
   }
 
   return (
-    <Select onValueChange={(value: string) => onSelectCategory(value)}>
+    <Select onValueChange={(value: string) => onSelectCategory(value)} disabled>
       <SelectTrigger className="select-field">
         <SelectValue placeholder="Category" />
       </SelectTrigger>

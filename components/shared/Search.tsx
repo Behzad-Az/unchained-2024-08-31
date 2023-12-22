@@ -40,6 +40,7 @@ const Search = ({ placeHolder = "Search" }: { placeHolder?: string }) => {
         placeholder={placeHolder}
         onChange={e => setQuery(e.target.value)}
         className="p-regular-16 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+        disabled
       />
     </div>
   )

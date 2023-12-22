@@ -28,14 +28,14 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Self-Serve AI Tools for the Modern Homebuyer</h1>
-            <p className="p-regular-20 md:p-regular-24">
+            <p className="p-regular-18 md:p-regular-24">
               Today's homebuying demands quick decisions but the information needed for those decisions remains slow and inaccessible. It's time to modernize the homebuying experience.
             </p>
-            <p className="p-regular-20 md:p-regular-24">
+            <p className="p-regular-18 md:p-regular-24">
               We create self-serve AI tools to provide modern homebuyers relevant, unbiased and factual datapoints quickly.
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#demo">Explore Now</Link>
+              <Link href="#condo-whisperer">Explore Now</Link>
             </Button>
           </div>
           <Image 
@@ -48,44 +48,29 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         </div>
       </section>
       <Separator />
-      <section id="demo" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+      <section id="condo-whisperer" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Condo Whisperer</h1>
             <h3 className="h3-bold">Demo it here. No login required.</h3>
-            <p className="p-regular-18 md:p-regular-24">
+            <p className="p-regular-18 md:p-regular-20">
               As a homebuyer, resident, or curious Vancouverite, you should stay informed about what's happening inside the city's condos. We created an AI Chatbox to tell the unbiased, relevant and accurate story of every building.
             </p>
-            <p className="p-regular-18 md:p-regular-24">
+            <p className="p-regular-18 md:p-regular-20">
               Today's sample building is 909 Mainland Street. Use our AI Chatbot to learn everything you need about this building.
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="/sign-in">Get Full Access</Link>
+              <Link href="/sign-in">Access Full ChatBot</Link>
             </Button>
           </div>
           <ChatBox />
         </div>
       </section>
-      {/* <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
-        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
-          <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">Walton AI</h1>
-            <h3 className="h3-bold">Demo it here. No login required.</h3>
-            <p className="p-regular-20 md:p-regular-24">
-              Today's sample condo is 909 Mainland Street in Vancouver. Use our AI Chatbot to learn everything you need about this building.
-            </p>
-            <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#reports">Login for full access</Link>
-            </Button>
-          </div>
-          <ChatBox />
-        </div>
-      </section> */}
       <Separator />
-      <section id="one-pager" className="wrapper py-8 flex flex-col gap-8 md:gap-12">
+      <section id="one-pager" className="wrapper py-8 flex flex-col gap-8 md:gap-12 bg-dotted-pattern bg-contain">
         <h1 className="h1-bold">1-Pager</h1>
         <h3 className="h3-bold">All the crucial facts for your condo buying decision.</h3>
-        <p className="p-regular-18 md:p-regular-24">
+        <p className="p-regular-18 md:p-regular-20">
           Our AI analyzes thousands of strata documents and user questions daily to summarize the latest relevant building facts in plain language on a concise one-pager.
         </p>
         <Button size="lg" asChild className="button w-full sm:w-fit">
@@ -111,7 +96,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Lifesaver 2.0</h1>
             <h3 className="h3-bold">Know what to check when you view the condo.</h3>
-            <p className="p-regular-18 md:p-regular-24">
+            <p className="p-regular-18 md:p-regular-20">
               Over 50 simple checklist items compiled from 100s of inspectors, contractors and investors to avoid future “how did we miss this” moments.
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
@@ -129,6 +114,18 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
       </section>
       <Separator />
       <TestimonialSlider />
+      <Separator />
+      <section id="our-story" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+        <div className="wrapper flex flex-col justify-center gap-8">
+          <h1 className="h1-bold">Our Story</h1>
+          <p className="p-regular-18 md:p-regular-20">
+            In 2017, my partner and I purchased our first condo in Vancouver. Then in 2021, we sold our condo, and bought a detached home in Coquitlam to grow our family. The same frustrating questions crossed our minds in every transaction. What value is my realtor adding? Why are we paying so much? How do we make sense of the condo docs? Can we do this transaction ourselves?
+          </p>
+          <p className="p-regular-18 md:p-regular-20">
+            We asked around our family and friends, and soon realized that most of our peers felt the same way! So we set out on leveraging data and AI technologies to create self-serve tools to help average Vancouverites navigate real-estate transactions on their own better, quicker, and more conveniently than before.
+          </p>
+        </div>
+      </section>
     </>
   );
 };
