@@ -81,7 +81,7 @@ const ChatBox = () => {
     .then(response => response.json())
     .then(reply => setChatLog(prevState => [...prevState, { content: reply, sender: "gpt" }]))
     .catch(error => {
-      console.error(error)
+      console.error("Encountered server error:", error)
       setChatLog(prevState => [...prevState, { content: "Could not get a reply from AI.", sender: "gpt" }])
     })
     .finally(() => setIsLoading(false))
