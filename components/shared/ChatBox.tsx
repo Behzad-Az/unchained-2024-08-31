@@ -66,10 +66,24 @@ const ChatBox = () => {
     setChatLog(prevState => [...prevState, { content: formData.message, sender: "user" }])
     setIsLoading(true)
     form.reset({ message: "" })
-    fetch('https://randomuser.me/api/')
+    fetch("http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      credentials: "same-origin",
+      body: JSON.stringify({
+        "address": "909Mainland",
+        "prompt": formData.message
+      })
+    })
     .then(response => response.json())
-    .then(json => setChatLog(prevState => [...prevState, { content: json.results[0].email, sender: "gpt" }]))
-    .catch(error => {})
+    .then(reply => setChatLog(prevState => [...prevState, { content: reply, sender: "gpt" }]))
+    .catch(error => {
+      console.error("Could not get a reply from AI.")
+      setChatLog(prevState => [...prevState, { content: "Could not get a reply from AI.", sender: "gpt" }])
+    })
     .finally(() => setIsLoading(false))
   }
 
