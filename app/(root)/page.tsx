@@ -7,6 +7,7 @@ import Link from "next/link";
 import ChatBox from "@/components/shared/ChatBox";
 import Search from "@/components/shared/Search";
 import { SearchParamProps } from "@/types";
+import CategoryFilter from "@/components/shared/CategoryFilter";
 
 export default async function HomePage({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1
@@ -57,7 +58,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <h2 className="h2-bold">Trusted by <br /> Thousands of Users</h2>
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search placeHolder="Search by address..." />
-          Category
+          <CategoryFilter />
         </div>
         <Collection
           data={reports?.data}
@@ -65,7 +66,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           emptyStateSubText="Come back later"
           collectionType="All_Reports"
           limit={6}
-          page={1}
+          page={page}
           totalPages={reports?.totalPages}
         />
       </section>

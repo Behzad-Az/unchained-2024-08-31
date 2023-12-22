@@ -55,7 +55,7 @@ const ProfilePage = async({ searchParams }: SearchParamProps) => {
           emptyTitle="You have not created a report yet"
           emptyStateSubText="Go create some now"
           collectionType="My_Created_Reports"
-          limit={6}
+          limit={3}
           page={ordersPage}
           urlParamName="reportsPage"
           totalPages={orders?.totalPages}

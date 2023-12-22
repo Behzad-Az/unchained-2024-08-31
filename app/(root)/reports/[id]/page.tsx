@@ -84,9 +84,9 @@ const ReportDetailsPage = async ({ params: { id }, searchParams}: SearchParamPro
           emptyTitle="No reports found"
           emptyStateSubText="Come back later"
           collectionType="All_Reports"
-          limit={6}
-          page={1}
-          totalPages={2}
+          limit={3}
+          page={searchParams.page as string}
+          totalPages={relatedReports?.totalPages}
         />
       </section>
     </>

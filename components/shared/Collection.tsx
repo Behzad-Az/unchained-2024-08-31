@@ -1,5 +1,6 @@
 import { IReport } from "@/lib/mongodb/database/models/report.model"
 import ReportCard from "./ReportCard"
+import Pagination from "./Pagination"
 
 type Props = {
   data: IReport[]
@@ -29,6 +30,10 @@ const Collection = ({ data, emptyTitle, emptyStateSubText, limit, page, totalPag
           })
         }
       </ul>
+      { 
+        totalPages > 0 && 
+        <Pagination urlParamName={urlParamName} page={page} totalPages={totalPages} />
+      }
     </div>
   ):
   (
