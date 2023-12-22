@@ -23,26 +23,18 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
+      <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-yellow-500">
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">Try it here! No login required.</h1>
-            <p className="p-regular-20 md:p-regular-24">New buildings are added daily.</p>
+            <h1 className="h1-bold">Self-Serve AI Tools for the Modern Homebuyer</h1>
+            <p className="p-regular-20 md:p-regular-24">
+              Today's homebuying demands quick decisions but the information needed for those decisions remains slow and inaccessible. It's time to modernize the homebuying experience.
+            </p>
+            <p className="p-regular-20 md:p-regular-24">
+              We create self-serve AI tools to provide modern homebuyers relevant, unbiased and factual datapoints quickly.
+            </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#reports">Explore More</Link>
-            </Button>
-          </div>
-          <ChatBox />
-        </div>
-      </section>
-      <section className="bg-primary-50 bg-dotted-pattern bg-contain py-5 md:py-10">
-        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
-          <div className="flex flex-col justify-center gap-8">
-            <h1 className="h1-bold">Self-serve tools for Vancouver homebuyers</h1>
-            <p className="p-regular-20 md:p-regular-24">Real-estate isn't complicated. Yet, a multi-billion dollar industry pretends that it is.</p>
-            <p className="p-regular-20 md:p-regular-24">We created self-serve data and AI tools to unchain Vancouverites from the industry.</p>
-            <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#reports">Explore Now</Link>
+              <Link href="#demo">Explore Now</Link>
             </Button>
           </div>
           <Image 
@@ -54,8 +46,41 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           />
         </div>
       </section>
-      <section id="reports" className="wrapper my-8 flex flex-col gap-8 md:gap-12">
-        <h2 className="h2-bold">Trusted by <br /> Thousands of Users</h2>
+      <section id="demo" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+          <div className="flex flex-col justify-center gap-8">
+            <h1 className="h1-bold">Condo Whisperer</h1>
+            <h3 className="h3-bold">Demo it here. No login required.</h3>
+            <p className="p-regular-20 md:p-regular-24">
+              As a homebuyer, resident, or curious Vancouverite, you should stay informed about what's happening inside the city's condos. We created an AI Chatbox to tell the unbiased, relevant and accurate story of every building.
+            </p>
+            <p className="p-regular-20 md:p-regular-24">
+              Today's sample building is 909 Mainland Street. Use our AI Chatbot to learn everything you need about this building.
+            </p>
+            <Button size="lg" asChild className="button w-full sm:w-fit">
+              <Link href="/sign-in">Login for full access</Link>
+            </Button>
+          </div>
+          <ChatBox />
+        </div>
+      </section>
+      {/* <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+          <div className="flex flex-col justify-center gap-8">
+            <h1 className="h1-bold">Walton AI</h1>
+            <h3 className="h3-bold">Demo it here. No login required.</h3>
+            <p className="p-regular-20 md:p-regular-24">
+              Today's sample condo is 909 Mainland Street in Vancouver. Use our AI Chatbot to learn everything you need about this building.
+            </p>
+            <Button size="lg" asChild className="button w-full sm:w-fit">
+              <Link href="#reports">Login for full access</Link>
+            </Button>
+          </div>
+          <ChatBox />
+        </div>
+      </section> */}
+      <section id="reports" className="wrapper my-8 flex flex-col gap-8 md:gap-12 bg-primary-50">
+        <h2 className="h2-bold">Get your AI powered condo summary report for only $5</h2>
         <div className="flex w-full flex-col gap-5 md:flex-row">
           <Search placeHolder="Search by address..." />
           <CategoryFilter />
