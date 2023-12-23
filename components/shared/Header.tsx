@@ -8,7 +8,7 @@ import MobileNav from "./MobileNav"
 const Header = () => {
   return (
     <header className="w-full border-b">
-      <div className="wrapper flex items-center justify-between">
+      <div className="wrapper flex items-center justify-between xl:px-5">
         <Link href="/" className="w-36">
           <Image src="/assets/images/logo-21re.svg" width={128} height={38} alt="21.R.E. Logo" />
         </Link>

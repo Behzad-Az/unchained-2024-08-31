@@ -22,7 +22,7 @@ type Message = {
 
 const FormSchema = z.object({
   message: z.string().min(2, {
-    message: "Message is too short.",
+    message: "Message is too short",
   }),
 })
 

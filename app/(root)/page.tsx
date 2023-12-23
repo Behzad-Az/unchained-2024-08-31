@@ -24,7 +24,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
 
   return (
     <>
-      <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-yellow-500">
+      <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-yellow-500 xl:px-5">
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Self-Serve AI Tools for the Modern Homebuyer</h1>
@@ -48,7 +48,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         </div>
       </section>
       <Separator />
-      <section id="condo-whisperer" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+      <section id="condo-whisperer" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50 xl:px-5">
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Condo Whisperer</h1>
@@ -67,7 +67,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         </div>
       </section>
       <Separator />
-      <section id="one-pager" className="wrapper py-8 flex flex-col gap-8 md:gap-12 bg-dotted-pattern bg-contain">
+      <section id="one-pager" className="wrapper py-8 flex flex-col gap-8 md:gap-12 bg-dotted-pattern bg-contain xl:px-5">
         <h1 className="h1-bold">1-Pager</h1>
         <h3 className="h3-bold">AI generated fact sheets for your condo buying decision.</h3>
         <p className="p-regular-18 md:p-regular-20">
@@ -93,7 +93,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           </div>
       </section>
       <Separator />
-      <section id="lifesaver" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+      <section id="lifesaver" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50 xl:px-5">
         <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Lifesaver 2.0</h1>
@@ -117,7 +117,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
       <Separator />
       <TestimonialSlider />
       <Separator />
-      <section id="our-story" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50">
+      <section id="our-story" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50 xl:px-5">
         <div className="wrapper flex flex-col justify-center gap-8">
           <h1 className="h1-bold">Our Story</h1>
           <p className="p-regular-18 md:p-regular-20">
