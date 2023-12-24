@@ -20,30 +20,17 @@ const FormSchema = z.object({
 })
 
 const RegisterPage = () => {
-
-  const [isLoading, setIsLoading] = useState<boolean>(false)
   
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      email: "" as string
-    },
-  })
-
-  const onSubmit = async(formData: z.infer<typeof FormSchema>) => {
-    console.log("i'm here submitting register")
-  }
-
   const [time, setTime] = useState({
     days: 0,
     hours: 0,
     minutes: 0,
     seconds: 0
   })
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const targetDate = new Date()
-  targetDate.setDate(targetDate.getDate() + 3)
-
+  const targetDate = new Date("2024-3-31")
+  
   useEffect(() => {
     const timerInterval = setInterval(() => {
       const currentTime = new Date()
@@ -66,6 +53,19 @@ const RegisterPage = () => {
       clearInterval(timerInterval) // Cleanup the interval when the component unmounts.
     }
   }, [])
+
+  const form = useForm<z.infer<typeof FormSchema>>({
+    resolver: zodResolver(FormSchema),
+    defaultValues: {
+      email: "" as string
+    },
+  })
+
+  const onSubmit = async(formData: z.infer<typeof FormSchema>) => {
+    console.log("i'm here submitting register")
+  }
+
+
 
 
   return (
@@ -94,7 +94,7 @@ const RegisterPage = () => {
             </div>
           </div>
           <p className="p-regular-18 md:p-regular-24">
-            We are working tirelessly to expand our dataset. Your interest will only encourage us further. Join our growing community!
+            We are working tirelessly on the final touches. Your early interest will only encourage us further. Our earlybrids will receive LifeSaver 2.0 for free upon signup. So join our growing community!
           </p>
 
           <Form {...form}>
@@ -106,10 +106,9 @@ const RegisterPage = () => {
                   <FormItem>
                     <FormControl>
                       <div className="flex-center min-h-[60px] w-full overflow-hidden rounded-full bg-grey-50 pl-4 opacity-90">
-                        <Image src="/assets/icons/email.svg" alt="email" width={22} height={22} />
                         <Input 
                           type="email" 
-                          placeholder="Enter email address"
+                          placeholder="Enter email address to join"
                           {...field}
                           className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                           disabled={isLoading}

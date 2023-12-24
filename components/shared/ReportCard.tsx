@@ -32,7 +32,7 @@ const ReportCard = ({ report, hasOrderLink, hidePrice }: Props) => {
       <Link 
         href={`/reports/${_id}`}
         style={{ backgroundImage: `url(${imgUrl})` }}
-        className="flex-center flex-grow bg-gray-50 bg-cover bg-center text-grey-500"
+        className="flex-center flex-grow bg-grey-50 bg-cover bg-center text-grey-500"
       />
       {
         isReportCreator && !hidePrice &&

@@ -34,17 +34,19 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
             <p className="p-regular-18 md:p-regular-24">
               We create self-serve AI tools to provide modern homebuyers relevant, unbiased and factual datapoints quickly.
             </p>
-            <Button size="lg" asChild className="button w-full sm:w-fit">
+            <Button size="lg" asChild className="button w-full md:w-fit">
               <Link href="#condo-whisperer">👇🏻 Free demo right here 👇🏻</Link>
             </Button>
           </div>
-          <Image 
-            src="/assets/images/hero-demo.png" 
-            alt="hero"
-            width={1000} 
-            height={1000} 
-            className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
-          />
+          <div className="flex w-full flex-center">
+            <Image 
+              src="/assets/images/hero-demo.png" 
+              alt="hero"
+              width={1000} 
+              height={1000} 
+              className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
+            />
+          </div>
         </div>
       </section>
       <Separator />
@@ -57,9 +59,9 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               As a homebuyer, resident, or curious Vancouverite, you should stay informed about what's happening inside the city's condos. We created an AI Chatbox to tell the unbiased, relevant and accurate story of every building.
             </p>
             <p className="p-regular-18 md:p-regular-20">
-              Today's sample building is 909 Mainland Street. Use our AI Chatbot to learn everything you need about this building.
+              Today's demo is 909 Mainland Street. Use our AI Chatbot to learn everything you need about this building.
             </p>
-            <Button size="lg" asChild className="button w-full sm:w-fit">
+            <Button size="lg" asChild className="button w-full md:w-fit">
               <Link href="/register">Access Full ChatBot</Link>
             </Button>
           </div>
@@ -73,8 +75,8 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <p className="p-regular-18 md:p-regular-20">
           Our AI analyzes thousands of strata documents and user questions daily to summarize the latest relevant building facts in plain language on a concise one-pager.
         </p>
-        <Button size="lg" asChild className="button w-full sm:w-fit">
-          <Link href="/sign-in">Browse 1-Pagers</Link>
+        <Button size="lg" asChild className="button w-full md:w-fit">
+          <Link href="/register">Browse All 1-Pagers</Link>
         </Button>
         <div className="ring-1 ring-offset-8 rounded ring-gray-300 flex flex-col gap-8 md:gap-12 bg-white">
           <div className="flex w-full flex-col gap-5 md:flex-row">
@@ -101,8 +103,8 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
             <p className="p-regular-18 md:p-regular-20">
               Over 50 simple checklist items compiled from 100s of inspectors, contractors and investors to avoid future “how did we miss this” moments.
             </p>
-            <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="/sign-in">Get Your Free Copy</Link>
+            <Button size="lg" asChild className="button w-full md:w-fit">
+              <Link href="/register">Get Your Free Copy</Link>
             </Button>
           </div>
           <Image 
@@ -126,8 +128,8 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           <p className="p-regular-18 md:p-regular-20">
             We asked around our family and friends, and soon realized that most of our peers felt the same way! So we set out on leveraging data and AI technologies to create self-serve tools to help average Vancouverites navigate real-estate transactions on their own better, quicker, and more conveniently than before.
           </p>
-          <Button size="lg" asChild className="button w-full sm:w-fit">
-            <Link href="/sign-in">Join Now</Link>
+          <Button size="lg" asChild className="button w-full md:w-fit">
+            <Link href="/register">Join Now</Link>
           </Button>
         </div>
       </section>

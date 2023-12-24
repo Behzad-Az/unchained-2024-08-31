@@ -44,7 +44,7 @@ const ChatLine = ({ content, sender }: Message) => {
         className={params.imgClass}
       />
       <p className={params.pClass}>
-        {content}
+        {sender === "gpt" && content === "spinner" ? <Image src="/assets/icons/spinner.svg" alt="spinner" width={18} height={18} /> : content }
       </p>
     </div>
   )
@@ -63,7 +63,7 @@ const ChatBox = () => {
   })
 
   const onSubmit = async(formData: z.infer<typeof FormSchema>) => {
-    setChatLog(prevState => [...prevState, { content: formData.message, sender: "user" }])
+    setChatLog(prevState => [...prevState, { content: formData.message, sender: "user" }, { content: "spinner", sender: "gpt" }])
     setIsLoading(true)
     // const apiAddress = "http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info"
     const apiAddress = "https://stratabot-af3cb4b114da.herokuapp.com/get-building-info"
@@ -81,7 +81,10 @@ const ChatBox = () => {
       })
     })
     .then(response => response.json())
-    .then(reply => setChatLog(prevState => [...prevState, { content: reply, sender: "gpt" }]))
+    .then(reply => setChatLog(prevState => {
+      const newState = [...prevState].filter(item => !(item.content === "spinner" && item.sender === "gpt"))
+      return [...newState, { content: reply, sender: "gpt" }]
+    }))
     .catch(error => {
       console.error("Encountered server error:", error)
       setChatLog(prevState => [...prevState, { content: "Could not get a reply from AI.", sender: "gpt" }])
@@ -103,7 +106,7 @@ const ChatBox = () => {
                     <Image src="/assets/icons/conversation.svg" alt="chat" width={22} height={22} />
                     <Input 
                       type="text" 
-                      placeholder={isLoading ? "Getting reply from AI.." : "Ask me anything about 909 Mainland Street"}
+                      placeholder={isLoading ? "Getting reply from AI..." : "Ask me anything about 909 Mainland Street"}
                       {...field}
                       className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                       disabled={isLoading}
