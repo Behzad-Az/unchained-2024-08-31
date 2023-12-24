@@ -60,7 +60,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               Today's sample building is 909 Mainland Street. Use our AI Chatbot to learn everything you need about this building.
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="/sign-in">Access Full ChatBot</Link>
+              <Link href="/register">Access Full ChatBot</Link>
             </Button>
           </div>
           <ChatBox />

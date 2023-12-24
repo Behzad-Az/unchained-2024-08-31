@@ -69,9 +69,11 @@ const RegisterPage = () => {
 
 
   return (
-    <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-yellow-500 xl:px-5">
+    <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-yellow-500 xl:px-5 min-h-full flex-center">
       <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+        
         <div className="flex flex-col justify-center gap-8 text-center">
+
           <h2 className="h2-bold text-center">Launch Countdown</h2>
           <div className="grid grid-cols-4 gap-1">
             <div>
@@ -92,8 +94,9 @@ const RegisterPage = () => {
             </div>
           </div>
           <p className="p-regular-18 md:p-regular-24">
-            We are working tirelessly to expand our dataset. Your interest will only encourage us further. Sign up below!
+            We are working tirelessly to expand our dataset. Your interest will only encourage us further. Join our growing community!
           </p>
+
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-4">
               <FormField
@@ -102,33 +105,35 @@ const RegisterPage = () => {
                 render={({ field }) => (
                   <FormItem>
                     <FormControl>
-                      <div className="flex-center min-h-[40px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2 opacity-90">
+                      <div className="flex-center min-h-[60px] w-full overflow-hidden rounded-full bg-grey-50 pl-4 opacity-90">
                         <Image src="/assets/icons/email.svg" alt="email" width={22} height={22} />
                         <Input 
                           type="email" 
-                          placeholder="Register with enter email address"
+                          placeholder="Enter email address"
                           {...field}
                           className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                           disabled={isLoading}
                         />
+                        <Button type="submit" className="h-[60px] rounded-none">Join Now</Button>
                       </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
-              <Button type="submit">Join Now</Button>
             </form>
           </Form>
-          {/* <p className="p-regular-18 md:p-regular-24">Bonus: Earlybirds will receive LifeSaver 2.0 free!</p> */}
+
         </div>
-        <Image 
-          src="/assets/images/start-up.png" 
-          alt="hero"
-          width={1000} 
-          height={1000} 
-          className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
-        />
+        <div className="flex w-full flex-center">
+          <Image 
+            src="/assets/images/start-up.png" 
+            alt="hero"
+            width={512} 
+            height={512} 
+            className="max-h-[70vh] object-contain object-center 2xl:max-h-[50vh]"
+          />
+        </div>
       </div>
     </section>
   )
