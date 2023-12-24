@@ -25,7 +25,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
   return (
     <>
       <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-yellow-500 xl:px-5">
-        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Self-Serve AI Tools for the Modern Homebuyer</h1>
             <p className="p-regular-18 md:p-regular-24">
@@ -35,7 +35,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               We create self-serve AI tools to provide modern homebuyers relevant, unbiased and factual datapoints quickly.
             </p>
             <Button size="lg" asChild className="button w-full sm:w-fit">
-              <Link href="#condo-whisperer">Explore Now</Link>
+              <Link href="#condo-whisperer">👇🏻 Free demo right here 👇🏻</Link>
             </Button>
           </div>
           <Image 
@@ -49,7 +49,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
       </section>
       <Separator />
       <section id="condo-whisperer" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50 xl:px-5">
-        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Condo Whisperer</h1>
             <h3 className="h3-bold">Demo it here. No login required.</h3>
@@ -94,7 +94,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
       </section>
       <Separator />
       <section id="lifesaver" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50 xl:px-5">
-        <div className="wrapper grid gird-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
+        <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Lifesaver 2.0</h1>
             <h3 className="h3-bold">Know what to check when you view the condo.</h3>
