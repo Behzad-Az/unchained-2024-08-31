@@ -26,31 +26,7 @@ const FormSchema = z.object({
   }),
 })
 
-const ChatLine = ({ content, sender }: Message) => {
-  const params = {
-    containerClass: sender === "gpt" ? "w-full flex flex-row items-end pr-12" : "w-full flex flex-row-reverse items-end pl-12",
-    src: sender === "gpt" ? "/assets/icons/ai.svg" : "/assets/icons/user.svg",
-    alt: sender,
-    imgClass: sender === "gpt" ? "mr-2" : "ml-2",
-    pClass: sender === "gpt" ? "px-2 py-2 rounded-md text-sm bg-violet-400" : "px-2 py-2 rounded-md text-sm bg-violet-100"
-  }
-  return (
-    <div className={params.containerClass}>
-      <Image 
-        src={params.src}
-        alt={params.alt}
-        width={22}
-        height={22}
-        className={params.imgClass}
-      />
-      <p className={params.pClass}>
-        {content}
-      </p>
-    </div>
-  )
-}
-
-const ChatBox = () => {
+const RegisterPage = () => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [chatLog, setChatLog] = useState<Message[]>(mockChatLog)
@@ -65,10 +41,8 @@ const ChatBox = () => {
   const onSubmit = async(formData: z.infer<typeof FormSchema>) => {
     setChatLog(prevState => [...prevState, { content: formData.message, sender: "user" }])
     setIsLoading(true)
-    // const apiAddress = "http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info"
-    const apiAddress = "https://stratabot-af3cb4b114da.herokuapp.com/get-building-info"
     form.reset({ message: "" })
-    fetch(apiAddress, {
+    fetch("http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -88,22 +62,26 @@ const ChatBox = () => {
     })
     .finally(() => setIsLoading(false))
   }
-
   return (
-    <div className="w-full flex min-h-[400px] max-h-[600px] flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg px-3 py-3 gap-3 overflow-scroll">
+    <div className="h-full bg-yellow-500 flex flex-col items-center justify-center">
+      <div className="w-5/6 max-w-[700px]">
+      <h1 className="h1-bold text-center">Countdown to launch</h1>
+      <h1 className="h1-bold text-center">01 : 13 : 05 : 55</h1>
+      <p className="text-center">insert working countdow</p>
+      <h3 className="h3-bold text-center pt-10 pb-2">Register with email</h3>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
           <FormField
             control={form.control}
             name="message"
             render={({ field }) => (
               <FormItem>
                 <FormControl>
-                  <div className="flex-center min-h-[40px] w-full overflow-hidden rounded-full bg-grey-50 px-4 py-2 opacity-90">
-                    <Image src="/assets/icons/conversation.svg" alt="chat" width={22} height={22} />
+                  <div className="flex-center min-h-[40px] w-full overflow-hidden rounded-xl bg-grey-50 px-4 py-2 opacity-90">
+                    <Image src="/assets/icons/search.svg" alt="email" width={22} height={22} />
                     <Input 
-                      type="text" 
-                      placeholder={isLoading ? "Getting reply from AI.." : "Ask me anything about 909 Mainland Street"}
+                      type="email" 
+                      placeholder="Register with enter email address"
                       {...field}
                       className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                       disabled={isLoading}
@@ -116,11 +94,14 @@ const ChatBox = () => {
           />
         </form>
       </Form>
-      {
-        [...chatLog].reverse().map((chat, index) => <ChatLine key={chat.content} {...chat} />)
-      }
+      <h1 className="h1-bold text-center pt-10">You will get:</h1>
+      <p className="text-center py-3">Free premium access for life</p>
+      <p className="text-center py-3">LifeSaver 2.0 for free</p>
+
+      <p className="text-center py-3">style thi page TBD</p>
+      </div>
     </div>
   )
 }
 
-export default ChatBox
+export default RegisterPage
