@@ -14,7 +14,7 @@ const Search = ({ placeHolder = "Search" }: { placeHolder?: string }) => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       let newUrl = ""
-      if(query) {
+      if (query) {
         newUrl = formUrlQuery({
           params: searchParams.toString(),
           key: "query",

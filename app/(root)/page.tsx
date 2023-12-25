@@ -19,7 +19,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
     query,
     category,
     page,
-    limit: 6
+    limit: 3
   })
 
   return (
@@ -54,7 +54,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Condo Whisperer</h1>
-            <h3 className="h3-bold">Ask anything you need about a condo as if you had a friend living there.</h3>
+            <h3 className="h3-bold">Ask questions about a condo as if you had a friend living there.</h3>
             <p className="p-regular-18 md:p-regular-20">
               As a homebuyer, resident, or curious Vancouverite, you should stay informed about what's happening inside the city's condos. We created an AI Chatbox to tell the unbiased, relevant and accurate story of every building.
             </p>
@@ -88,7 +88,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
             emptyTitle="No reports found"
             emptyStateSubText="Come back later"
             collectionType="All_Reports"
-            limit={6}
+            limit={3}
             page={page}
             totalPages={reports?.totalPages}
             />
@@ -101,7 +101,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
             <h1 className="h1-bold">Lifesaver 2.0</h1>
             <h3 className="h3-bold">Know what to check when you view the condo.</h3>
             <p className="p-regular-18 md:p-regular-20">
-              Over 50 simple checklist items compiled from 100s of inspectors, contractors and investors to avoid future “how did we miss this” moments.
+              Over 50 simple checklist items compiled by 100s of inspectors, contractors and investors to avoid future “how did we miss this” moments.
             </p>
             <Button size="lg" asChild className="button w-full md:w-fit">
               <Link href="/register">Get Your Free Copy</Link>

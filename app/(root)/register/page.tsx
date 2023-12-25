@@ -14,6 +14,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 const FormSchema = z.object({
   email: z.string().email("Invalid email")
@@ -94,7 +95,7 @@ const RegisterPage = () => {
             </div>
           </div>
           <p className="p-regular-18 md:p-regular-24">
-            We are working tirelessly on the final touches. Your early interest will only encourage us further. Our earlybrids will receive LifeSaver 2.0 for free upon signup. So join our growing community!
+            We are working tirelessly on the final touches. Your early interest will only encourage us further. Our earlybrids will receive <Link href="/#lifesaver" className="text-primary-500 font-medium">Lifesaver 2.0</Link> for free upon signup. Join our growing community today!
           </p>
 
           <Form {...form}>
@@ -108,7 +109,7 @@ const RegisterPage = () => {
                       <div className="flex-center min-h-[60px] w-full overflow-hidden rounded-full bg-grey-50 pl-4 opacity-90">
                         <Input 
                           type="email" 
-                          placeholder="Enter email address to join"
+                          placeholder="Enter your email address to join"
                           {...field}
                           className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                           disabled={isLoading}

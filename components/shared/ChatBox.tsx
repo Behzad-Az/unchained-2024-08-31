@@ -84,7 +84,13 @@ const ChatBox = () => {
     .then(response => response.json())
     .then(reply => setChatLog(prevState => {
       const newState = [...prevState].filter(item => !(item.content === "spinner" && item.sender === "gpt"))
-      return [...newState, { content: reply, sender: "gpt" }]
+      const countUserQuestions = newState.reduce((accumulator, value) => {
+        return value.sender === "user" ? accumulator + 1 : accumulator
+      }, 0)
+
+      return countUserQuestions % 3 === 0 ? 
+        [...newState, { content: reply, sender: "gpt" }, {content: "Don't miss important facts about 909 Mainland Street? See our AI generated 1-Pager.", sender: "gpt"}]
+        : [...newState, { content: reply, sender: "gpt" }]
     }))
     .catch(error => {
       console.error("Encountered server error:", error)
@@ -94,7 +100,7 @@ const ChatBox = () => {
   }
 
   return (
-    <div id="chatbox" className="w-full flex min-h-[400px] max-h-[600px] flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg px-3 py-3 gap-3 overflow-scroll">
+    <div id="chatbox" className="w-full flex min-h-[400px] max-h-[600px] flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg px-3 py-3 gap-3 overflow-scroll shadow-md">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
