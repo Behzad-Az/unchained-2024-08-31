@@ -35,7 +35,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               We create self-serve AI tools to provide modern homebuyers relevant, unbiased and factual datapoints quickly.
             </p>
             <Button size="lg" asChild className="button w-full md:w-fit">
-              <Link href="#condo-whisperer">👇🏻 Free demo right here 👇🏻</Link>
+              <Link href="#condo-whisperer">👇🏻 Explore Free Live Demos 👇🏻</Link>
             </Button>
           </div>
           <div className="flex w-full flex-center">
@@ -54,12 +54,12 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Condo Whisperer</h1>
-            <h3 className="h3-bold">Demo it here. No login required.</h3>
+            <h3 className="h3-bold">Ask anything you need about a condo as if you had a friend living there.</h3>
             <p className="p-regular-18 md:p-regular-20">
               As a homebuyer, resident, or curious Vancouverite, you should stay informed about what's happening inside the city's condos. We created an AI Chatbox to tell the unbiased, relevant and accurate story of every building.
             </p>
             <p className="p-regular-18 md:p-regular-20">
-              Today's demo is 909 Mainland Street. Use our AI Chatbot to learn everything you need about this building.
+              <Link href="#chatbox" className="text-primary-500 font-semibold">Today's free live demo</Link> is 909 Mainland Street. Ask your questions from our AI Chatbot to learn everything you need about this building. No login required.
             </p>
             <Button size="lg" asChild className="button w-full md:w-fit">
               <Link href="/register">Access Full ChatBot</Link>

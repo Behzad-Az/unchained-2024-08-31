@@ -14,6 +14,7 @@ import {
   FormItem,
   FormMessage,
 } from "@/components/ui/form"
+import { Button } from "../ui/button"
 
 type Message = {
   content: string
@@ -93,7 +94,7 @@ const ChatBox = () => {
   }
 
   return (
-    <div className="w-full flex min-h-[400px] max-h-[600px] flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg px-3 py-3 gap-3 overflow-scroll">
+    <div id="chatbox" className="w-full flex min-h-[400px] max-h-[600px] flex-col-reverse bg-yellow-500 border-gray-700 border-2 rounded-lg px-3 py-3 gap-3 overflow-scroll">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FormField
@@ -111,6 +112,9 @@ const ChatBox = () => {
                       className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                       disabled={isLoading}
                     />
+                    <Button type="submit" size="icon" className="bg-transparent hover:bg-transparent">
+                      <Image src="/assets/icons/send.svg" alt="send" width={22} height={22} />
+                    </Button>
                   </div>
                 </FormControl>
                 <FormMessage />
