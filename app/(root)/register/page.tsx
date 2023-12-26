@@ -66,9 +66,6 @@ const RegisterPage = () => {
     console.log("i'm here submitting register")
   }
 
-
-
-
   return (
     <section className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-yellow-500 xl:px-5 min-h-full flex-center">
       <div className="wrapper grid grid-cols-1 gap-5 md:grid-cols-2 2xl:gap-0">

@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useMemo, useRef, useState } from "react"
 import Image from "next/image"
 import { mockChatLog } from "@/constants"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Button } from "../ui/button"
+import { createChatlog } from "@/lib/actions/chatlog.actions"
 
 type Message = {
   content: string
@@ -54,7 +55,8 @@ const ChatLine = ({ content, sender }: Message) => {
 const ChatBox = ({ clientIp }: { clientIp: string }) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [chatLog, setChatLog] = useState<Message[]>(mockChatLog)
+  const [chatlogState, setChatlogState] = useState<Message[]>(mockChatLog)
+  const sessionRef = useMemo<string>(() => (Math.random() + 1).toString(36).substring(3), []);
   
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
@@ -64,40 +66,50 @@ const ChatBox = ({ clientIp }: { clientIp: string }) => {
   })
 
   const onSubmit = async(formData: z.infer<typeof FormSchema>) => {
-    console.log("i'm here 0: ", clientIp)
-    // setChatLog(prevState => [...prevState, { content: formData.message, sender: "user" }, { content: "spinner", sender: "gpt" }])
-    // setIsLoading(true)
-    // // const apiAddress = "http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info"
-    // const apiAddress = "https://stratabot-af3cb4b114da.herokuapp.com/get-building-info"
-    // form.reset({ message: "" })
-    // fetch(apiAddress, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     // 'Content-Type': 'application/x-www-form-urlencoded',
-    //   },
-    //   credentials: "same-origin",
-    //   body: JSON.stringify({
-    //     "address": "909Mainland",
-    //     "prompt": formData.message
-    //   })
-    // })
-    // .then(response => response.json())
-    // .then(reply => setChatLog(prevState => {
-    //   const newState = [...prevState].filter(item => !(item.content === "spinner" && item.sender === "gpt"))
-    //   const countUserQuestions = newState.reduce((accumulator, value) => {
-    //     return value.sender === "user" ? accumulator + 1 : accumulator
-    //   }, 0)
+    const { message } =  formData
 
-    //   return countUserQuestions % 3 === 0 ? 
-    //     [...newState, { content: reply, sender: "gpt" }, {content: "Don't miss important facts about 909 Mainland Street? See our AI generated 1-Pager.", sender: "gpt"}]
-    //     : [...newState, { content: reply, sender: "gpt" }]
-    // }))
-    // .catch(error => {
-    //   console.error("Encountered server error:", error)
-    //   setChatLog(prevState => [...prevState, { content: "Could not get a reply from AI.", sender: "gpt" }])
-    // })
-    // .finally(() => setIsLoading(false))
+    setChatlogState(prevState => [...prevState, { content: message, sender: "user" }, { content: "spinner", sender: "gpt" }])
+    setIsLoading(true)
+    form.reset({ message: "" })
+
+    let dbId: string = ""
+    createChatlog({ ip: clientIp, sender: "user", content: message, sessionRef, messageRef: "first_message" })
+    .then(dbResponse => {
+      dbId = dbResponse._id as string
+      // const apiAddress = "http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info"
+      const apiAddress = "https://stratabot-af3cb4b114da.herokuapp.com/get-building-info"
+      return fetch(apiAddress, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        credentials: "same-origin",
+        body: JSON.stringify({
+          "address": "909Mainland",
+          "prompt": message
+        })
+      })
+    })
+    .then(response => response.json())
+    .then(reply => {
+      createChatlog({ ip: clientIp, sender: "gpt", content: reply, sessionRef, messageRef: dbId })
+      setChatlogState(prevState => {
+        const newState = [...prevState].filter(item => !(item.content === "spinner" && item.sender === "gpt"))
+        const countUserQuestions = newState.reduce((accumulator, value) => {
+          return value.sender === "user" ? accumulator + 1 : accumulator
+        }, 0)
+        return countUserQuestions % 3 === 0 ? 
+          [...newState, { content: reply, sender: "gpt" }, {content: "Don't miss important facts about 909 Mainland Street? See our AI generated 1-Pager.", sender: "gpt"}]
+          : [...newState, { content: reply, sender: "gpt" }]
+      })
+    })
+    .catch(error => {
+      console.error("Encountered server error:", error)
+      createChatlog({ ip: clientIp, sender: "gpt", content: `Error - Could not get a reply from AI: ${error}`, sessionRef, messageRef: dbId })
+      setChatlogState(prevState => [...prevState, { content: "Could not get a reply from AI.", sender: "gpt" }])
+    })
+    .finally(() => setIsLoading(false))
   }
 
   return (
@@ -131,7 +143,7 @@ const ChatBox = ({ clientIp }: { clientIp: string }) => {
         </form>
       </Form>
       {
-        [...chatLog].reverse().map((chat, index) => <ChatLine key={chat.content} {...chat} />)
+        [...chatlogState].reverse().map((chat, index) => <ChatLine key={chat.content} {...chat} />)
       }
     </div>
   )

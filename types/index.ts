@@ -100,6 +100,15 @@ export type CreateCategoryParams = {
   categoryName: string
 }
 
+// ====== Chatlog PARAMS
+export type CreateChatlogParams = {
+  ip: string
+  sender: "user" | "gpt"
+  content: string
+  sessionRef: string
+  messageRef: string
+}
+
 // ====== ORDER PARAMS
 export type CheckoutOrderParams = {
   reportTitle: string
