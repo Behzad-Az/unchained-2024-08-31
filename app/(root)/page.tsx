@@ -9,6 +9,7 @@ import Search from "@/components/shared/Search";
 import { SearchParamProps } from "@/types";
 import CategoryFilter from "@/components/shared/CategoryFilter";
 import { Separator } from "@/components/ui/separator";
+import { headers } from "next/headers";
 
 export default async function HomePage({ searchParams }: SearchParamProps) {
   const page = Number(searchParams?.page) || 1
@@ -21,6 +22,9 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
     page,
     limit: 3
   })
+
+  const header = headers()
+  const ip = (header.get('x-forwarded-for') ?? '127.0.0.1').split(',')[0]
 
   return (
     <>
@@ -65,7 +69,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               <Link href="/register">Access Full ChatBot</Link>
             </Button>
           </div>
-          <ChatBox />
+          <ChatBox clientIp={ip} />
         </div>
       </section>
       <Separator />

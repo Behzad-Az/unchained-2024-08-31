@@ -51,7 +51,7 @@ const ChatLine = ({ content, sender }: Message) => {
   )
 }
 
-const ChatBox = () => {
+const ChatBox = ({ clientIp }: { clientIp: string }) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [chatLog, setChatLog] = useState<Message[]>(mockChatLog)
@@ -64,39 +64,40 @@ const ChatBox = () => {
   })
 
   const onSubmit = async(formData: z.infer<typeof FormSchema>) => {
-    setChatLog(prevState => [...prevState, { content: formData.message, sender: "user" }, { content: "spinner", sender: "gpt" }])
-    setIsLoading(true)
-    // const apiAddress = "http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info"
-    const apiAddress = "https://stratabot-af3cb4b114da.herokuapp.com/get-building-info"
-    form.reset({ message: "" })
-    fetch(apiAddress, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // 'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      credentials: "same-origin",
-      body: JSON.stringify({
-        "address": "909Mainland",
-        "prompt": formData.message
-      })
-    })
-    .then(response => response.json())
-    .then(reply => setChatLog(prevState => {
-      const newState = [...prevState].filter(item => !(item.content === "spinner" && item.sender === "gpt"))
-      const countUserQuestions = newState.reduce((accumulator, value) => {
-        return value.sender === "user" ? accumulator + 1 : accumulator
-      }, 0)
+    console.log("i'm here 0: ", clientIp)
+    // setChatLog(prevState => [...prevState, { content: formData.message, sender: "user" }, { content: "spinner", sender: "gpt" }])
+    // setIsLoading(true)
+    // // const apiAddress = "http://ec2-35-182-161-73.ca-central-1.compute.amazonaws.com:8000/get-building-info"
+    // const apiAddress = "https://stratabot-af3cb4b114da.herokuapp.com/get-building-info"
+    // form.reset({ message: "" })
+    // fetch(apiAddress, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     // 'Content-Type': 'application/x-www-form-urlencoded',
+    //   },
+    //   credentials: "same-origin",
+    //   body: JSON.stringify({
+    //     "address": "909Mainland",
+    //     "prompt": formData.message
+    //   })
+    // })
+    // .then(response => response.json())
+    // .then(reply => setChatLog(prevState => {
+    //   const newState = [...prevState].filter(item => !(item.content === "spinner" && item.sender === "gpt"))
+    //   const countUserQuestions = newState.reduce((accumulator, value) => {
+    //     return value.sender === "user" ? accumulator + 1 : accumulator
+    //   }, 0)
 
-      return countUserQuestions % 3 === 0 ? 
-        [...newState, { content: reply, sender: "gpt" }, {content: "Don't miss important facts about 909 Mainland Street? See our AI generated 1-Pager.", sender: "gpt"}]
-        : [...newState, { content: reply, sender: "gpt" }]
-    }))
-    .catch(error => {
-      console.error("Encountered server error:", error)
-      setChatLog(prevState => [...prevState, { content: "Could not get a reply from AI.", sender: "gpt" }])
-    })
-    .finally(() => setIsLoading(false))
+    //   return countUserQuestions % 3 === 0 ? 
+    //     [...newState, { content: reply, sender: "gpt" }, {content: "Don't miss important facts about 909 Mainland Street? See our AI generated 1-Pager.", sender: "gpt"}]
+    //     : [...newState, { content: reply, sender: "gpt" }]
+    // }))
+    // .catch(error => {
+    //   console.error("Encountered server error:", error)
+    //   setChatLog(prevState => [...prevState, { content: "Could not get a reply from AI.", sender: "gpt" }])
+    // })
+    // .finally(() => setIsLoading(false))
   }
 
   return (
