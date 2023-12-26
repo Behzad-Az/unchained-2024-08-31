@@ -33,10 +33,10 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           <div className="flex flex-col justify-center gap-8">
             <h1 className="h1-bold">Self-Serve AI Tools for the Modern Homebuyer</h1>
             <p className="p-regular-18 md:p-regular-24">
-              Today's homebuying demands quick decisions but the information needed for those decisions remains slow and inaccessible. It's time to modernize the homebuying experience.
+              Today's homebuying demands quick decisions but the information needed for those decisions remains slow and inaccessible.
             </p>
             <p className="p-regular-18 md:p-regular-24">
-              We create self-serve AI tools to provide modern homebuyers relevant, unbiased and factual datapoints quickly.
+              We create self-serve AI tools to provide homebuyers relevant, unbiased and factual datapoints quickly and directly for a modern homebuying experience.
             </p>
             <Button size="lg" asChild className="button w-full md:w-fit">
               <Link href="#condo-whisperer">👇🏻 Explore Free Live Demos 👇🏻</Link>
