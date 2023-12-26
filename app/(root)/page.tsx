@@ -66,7 +66,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               <Link href="#chatbox" className="text-primary-500 font-semibold">Today's free live demo</Link> is 909 Mainland Street. Ask your questions from our AI Chatbot to learn everything you need about this building. No login required.
             </p>
             <Button size="lg" asChild className="button w-full md:w-fit">
-              <Link href="/register">Access Full ChatBot</Link>
+              <Link href="/subscribe">Access Full ChatBot</Link>
             </Button>
           </div>
           <ChatBox clientIp={ip} />
@@ -80,7 +80,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
           Our AI analyzes thousands of strata documents and user questions daily to summarize the latest relevant building facts in plain language on a concise one-pager.
         </p>
         <Button size="lg" asChild className="button w-full md:w-fit">
-          <Link href="/register">Browse All 1-Pagers</Link>
+          <Link href="/subscribe">Browse All 1-Pagers</Link>
         </Button>
         <div className="ring-1 ring-offset-8 rounded ring-gray-300 flex flex-col gap-8 md:gap-12 bg-white">
           <div className="flex w-full flex-col gap-5 md:flex-row">
@@ -108,7 +108,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               Over 50 simple checklist items compiled by 100s of inspectors, contractors and investors to avoid future “how did we miss this” moments.
             </p>
             <Button size="lg" asChild className="button w-full md:w-fit">
-              <Link href="/register">Get Your Free Copy</Link>
+              <Link href="/subscribe">Get Your Free Copy</Link>
             </Button>
           </div>
           <Image 
@@ -133,7 +133,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
             We asked around our family and friends, and soon realized that most of our peers felt the same way! So we set out on leveraging data and AI technologies to create self-serve tools to help average Vancouverites navigate real-estate transactions on their own better, quicker, and more conveniently than before.
           </p>
           <Button size="lg" asChild className="button w-full md:w-fit">
-            <Link href="/register">Join Now</Link>
+            <Link href="/subscribe">Join Now</Link>
           </Button>
         </div>
       </section>

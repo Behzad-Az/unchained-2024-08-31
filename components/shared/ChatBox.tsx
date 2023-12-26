@@ -131,7 +131,7 @@ const ChatBox = ({ clientIp }: { clientIp: string }) => {
                       className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
                       disabled={isLoading}
                     />
-                    <Button type="submit" size="icon" className="bg-transparent hover:bg-transparent">
+                    <Button type="submit" size="icon" className="bg-transparent hover:bg-transparent" disabled={isLoading}>
                       <Image src="/assets/icons/send.svg" alt="send" width={22} height={22} />
                     </Button>
                   </div>

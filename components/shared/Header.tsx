@@ -27,7 +27,7 @@ const Header = () => {
           </SignedIn>
           <SignedOut>
             <Button asChild className="rounded-full" size="lg">
-              <Link href="/register">Login</Link>
+              <Link href="/subscribe">Login</Link>
             </Button>
           </SignedOut>
         </div>

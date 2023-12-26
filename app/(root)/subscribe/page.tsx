@@ -15,12 +15,13 @@ import {
 } from "@/components/ui/form"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { createSubscriber } from "@/lib/actions/subscriber.actions"
 
 const FormSchema = z.object({
   email: z.string().email("Invalid email")
 })
 
-const RegisterPage = () => {
+const SubscriberPage = () => {
   
   const [time, setTime] = useState({
     days: 0,
@@ -28,7 +29,7 @@ const RegisterPage = () => {
     minutes: 0,
     seconds: 0
   })
-  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<"idle" | "loading" | "loaded" | "error">("idle")
 
   const targetDate = new Date("2024-3-31")
   
@@ -63,7 +64,14 @@ const RegisterPage = () => {
   })
 
   const onSubmit = async(formData: z.infer<typeof FormSchema>) => {
-    console.log("i'm here submitting register")
+    setIsLoading("loading")
+    createSubscriber({ email: formData.email })
+    .then(() => setIsLoading("loaded"))
+    .catch(err => {
+      setIsLoading("error")
+      console.error("Error adding subscriber: ", err)
+    })
+    .finally(() => form.reset({ email: "" }))
   }
 
   return (
@@ -109,18 +117,19 @@ const RegisterPage = () => {
                           placeholder="Enter your email address to join"
                           {...field}
                           className="p-regular-14 border-0 bg-grey-50 outline-offset-0 placeholder:text-grey-500 focus:border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
-                          disabled={isLoading}
+                          disabled={isLoading === "loading"}
                         />
-                        <Button type="submit" className="h-[60px] rounded-none">Join Now</Button>
+                        <Button type="submit" className="h-[60px] rounded-none" disabled={isLoading === "loading"}>Join Now</Button>
                       </div>
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+              { isLoading === "loaded" && <p className="p-regular-14">Thank you!</p> }
+              { isLoading === "error" && <p className="p-regular-14">Something went wrong. Please try again.</p> }
             </form>
           </Form>
-
         </div>
         <div className="flex w-full flex-center">
           <Image 
@@ -136,4 +145,4 @@ const RegisterPage = () => {
   )
 }
 
-export default RegisterPage
+export default SubscriberPage

@@ -109,6 +109,11 @@ export type CreateChatlogParams = {
   messageRef: string
 }
 
+// ====== SUBSCRIBER PARAMS
+export type CreateSubscriberParams = {
+  email: string
+}
+
 // ====== ORDER PARAMS
 export type CheckoutOrderParams = {
   reportTitle: string
