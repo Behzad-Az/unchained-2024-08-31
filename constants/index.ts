@@ -27,16 +27,16 @@ export const reportDefaultValues = {
 
 export const testimonials: { submitter: string, content: string }[] = [
   {
-    submitter: "Baba Raja, Coquitlam Home Buyer in 2021",
-    content: "I obtained my own mortgage pre-approval, shortlisted the properties, attended the open-houses, and finally decided to place an offer. My realtor wasn’t even available to view the house that I finally selected. I really only needed my agent’s services to prepare the purchase offer. But now, [insert name] allows me to prepare and submit offers that are legally and professionally equivalent to an offer prepared by a registered real estate agent."
+    submitter: "Angela Nickle, Richmond Condo Buyer in 2023",
+    content: "Condo Whisperer is great! In my house serach, every time I found an interesting listing, Condo Whisperer would answer my questions about the condominium's maintenance issues, financial performance and bylaws. In a couple of minutes, I would feel empowered as though I had read the entire condo docs - a process that used to take hours if not days."
   },
   {
-    submitter: "Angela Nickle, Richmond Home Buyer in 2023",
-    content: "Before [insert name], I missed out on so many opportunities because I felt ashamed that my offer was too low, or because I felt guilty that I would squander my realtor’s time and reputation. Now, with [insert name], I can submit an offer independently on any property that I like for whatever price or terms that make me comfortable. I am buying the home for me, so my priorities come first."
+    submitter: "Chris Lyth, Coquitlam Condo Buyer in 2023",
+    content: "I obtained my own mortgage pre-approval, shortlisted my properties, and began my search. I attended the open-house for what is now my home but unfortunately my realtor wasn't available on the open-house date. When viewing the unit by myself, I used Lifesaver 2.0 as my viewing checklist to ensure I check all the critical details. It gave me the confidence to proceed with my offer and to secure my dream home."
   },
   {
     submitter: "Ben Azampour, Renovation General Contractor in Vancouver, 2023",
-    content: "I submitted my first [insert name] offer in about 5 minutes. The same offer via my real estate agent used to take hours - if not days - mostly because of waiting, back and forth emails, and mistakes."
+    content: "I am amazed by the accuracy of the information that 21.R.E. provides. I decided to validate 21.R.E.'s information on my condo. Their AI is exceptional at picking out the important information, discarding the irrelevant stuff, and summarizing everything in plain English. Highly recommend their 1-Pagers if you plan on placing an offer on a condo!"
   },
 ]
 

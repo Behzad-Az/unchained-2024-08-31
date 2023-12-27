@@ -82,7 +82,8 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <Button size="lg" asChild className="button w-full md:w-fit">
           <Link href="/subscribe">Browse All 1-Pagers</Link>
         </Button>
-        <div className="ring-1 ring-offset-8 rounded ring-gray-300 flex flex-col gap-8 md:gap-12 bg-white">
+        <div className="ring-1 ring-offset-8 rounded ring-gray-300 flex flex-col gap-8 bg-white">
+          <p className="p-medium-20 text-center">Preview</p>
           <div className="flex w-full flex-col gap-5 md:flex-row">
             <Search placeHolder="Search by address..." />
             <CategoryFilter />
@@ -95,8 +96,8 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
             limit={3}
             page={page}
             totalPages={reports?.totalPages}
-            />
-          </div>
+          />
+        </div>
       </section>
       <Separator />
       <section id="lifesaver" className="bg-dotted-pattern bg-contain py-5 md:py-10 bg-primary-50 xl:px-5">
@@ -127,10 +128,10 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
         <div className="wrapper flex flex-col justify-center gap-8">
           <h1 className="h1-bold">Our Story</h1>
           <p className="p-regular-18 md:p-regular-20">
-            In 2017, my partner and I purchased our first condo in Vancouver. Then in 2021, we sold our condo, and bought a detached home in Coquitlam to grow our family. The same frustrating questions crossed our minds in every transaction. What value is my realtor adding? Why are we paying so much? How do we make sense of the condo docs? Can we do this transaction ourselves?
+            In 2017, my partner and I purchased our first one-bedroom condo in Vancouver. Then in 2023, we sold our one-bedroom, and upsized into a two-bedroom to grow our family. The same frustrating questions crossed our minds in both transaction. Why are the condo documents so disorganized? Why are they so long? How do we know we understood everything important?
           </p>
           <p className="p-regular-18 md:p-regular-20">
-            We asked around our family and friends, and soon realized that most of our peers felt the same way! So we set out on leveraging data and AI technologies to create self-serve tools to help average Vancouverites navigate real-estate transactions on their own better, quicker, and more conveniently than before.
+            We asked around our family and friends, and soon realized that most of our peers felt the same way! So we set out on leveraging data and AI technologies to create self-serve tools to help average Vancouverites navigate the homebuying experience on their own better, quicker, and more conveniently than before.
           </p>
           <Button size="lg" asChild className="button w-full md:w-fit">
             <Link href="/subscribe">Join Now</Link>
