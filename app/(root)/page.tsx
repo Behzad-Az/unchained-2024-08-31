@@ -36,7 +36,7 @@ export default async function HomePage({ searchParams }: SearchParamProps) {
               Today's homebuying demands quick decisions but the information needed for those decisions remains slow and inaccessible.
             </p>
             <p className="p-regular-18 md:p-regular-24">
-              We create self-serve AI tools to provide homebuyers relevant, unbiased and factual datapoints quickly and directly for a modern homebuying experience.
+              We create self-serve AI tools to provide homebuyers relevant, unbiased and factual datapoints quickly and directly for a modernized homebuying experience.
             </p>
             <Button size="lg" asChild className="button w-full md:w-fit">
               <Link href="#condo-whisperer">👇🏻 Explore Free Live Demos 👇🏻</Link>
